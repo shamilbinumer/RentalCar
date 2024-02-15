@@ -1,4 +1,4 @@
-import admin_schema from './Models/admin.model'
+import admin_schema from './Models/admin.model.js'
 import bcrypt from 'bcrypt'
 
 export async function AddAdmin(req,res){

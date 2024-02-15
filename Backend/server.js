@@ -7,7 +7,7 @@ dotenv.config()
 const app=express()
 app.use(cors())
 app.use(express.json({limit:"20mb"}));
-app.use("/task",router);
+app.use("/rentelCar",router);
 connection().then(()=>{
     app.listen(process.env.PORT,()=>{
         console.log("server started at ",process.env.PORT);

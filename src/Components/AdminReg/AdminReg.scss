@@ -1,0 +1,55 @@
+.adminRegMainDiv{
+    background: #E4D5C7;
+    height: 100vh;
+    padding-top: 8%;
+}
+.adminRegMainDiv{
+    .regCard{
+        width: 30%;
+        height: 500px;
+        background-color: #95877a;
+        margin: auto;
+        border-radius: 5px;
+        padding: 15px;
+    }
+    .regCard{
+        h2{
+            text-align: center;
+            font-size: 27px;
+            margin-top: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #503924;
+        }
+        .inputs{
+            width: 70%;
+            margin: auto;
+            padding-top: 30px;
+        }
+        input{
+            width: 100%;
+            margin-bottom: 20px;
+            height: 40px;
+            padding-left: 20px;
+            border-radius: 6px;
+            border: none;
+        }
+        .gotoLogin{
+            text-align: center;
+        }
+        .goLogin{
+            color: #503924;
+        }
+        .btn{
+            text-align: center;
+        }
+        button{
+            background-color: #E4D5C7;
+            width: 120px;
+            height: 40px;
+            font-weight: 700;
+            border: none;
+            text-align: center;
+        }
+    }
+}
