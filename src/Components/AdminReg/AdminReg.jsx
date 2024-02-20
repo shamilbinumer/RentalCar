@@ -4,6 +4,7 @@ import Navbar from '../Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+
 const AdminReg = () => {
       const navigate=useNavigate()
       const [val,setVal]=useState({
@@ -20,6 +21,22 @@ const AdminReg = () => {
 
   const addAdmin=async(e)=>{
       e.preventDefault()
+    // Password validation
+        if (val.password.length < 5) {
+          alert("Password must be at least 5 characters long.")
+          return;
+        }
+
+        if (!/[a-z]/.test(val.password)) {
+          alert("Password must contain at least one lowercase letter.")
+          return;
+        }
+
+        if (!/[A-Z]/.test(val.password)) {
+          alert("Password must contain at least one uppercase letter.")
+          return;
+        }
+
       const res=await axios.post("http://localhost:7000/rentelCar/addadmin",{...val})
      if(res){
       alert("Registered Successfully")

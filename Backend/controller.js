@@ -55,3 +55,17 @@ export async function AdminLogin(req, res) {
      console.log(error);
 }
 }
+
+////////////////user-auth/////////////
+
+export async function userAuth(req,res)
+{
+  try {
+    
+     const{username}=req.user;
+    res.status(200).send({msg:`${username}`})
+   } 
+   catch (error) {
+    res.status(404).send(error)
+  }
+}
