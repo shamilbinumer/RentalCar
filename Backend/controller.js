@@ -1,5 +1,10 @@
 import admin_schema from './Models/admin.model.js'
 import bcrypt from 'bcrypt'
+import pkg from "jsonwebtoken";
+const {sign}=pkg
+
+
+///////////////////admin-registration///////////////////
 
 export async function AddAdmin(req,res){
     try {
@@ -24,4 +29,29 @@ export async function AddAdmin(req,res){
     
     }
     
+}
+
+///////////////////admin-login////////////////////////
+
+
+export async function AdminLogin(req, res) {
+    try {
+     console.log(req.body);
+     const { email, password } = req.body;
+     const usr = await admin_schema.findOne({ email })
+     console.log(usr);
+     if (usr === null) return res.status(404).send("email or password doesnot exist");
+     const success =await bcrypt.compare(password, usr.password)
+     console.log(success);
+     const {username}=usr
+     if (success !== true) return res.status(404).send("email or password doesnot exist");
+     const token = await sign({ username }, process.env.JWT_KEY, { expiresIn: "24h" })
+     console.log(username);
+     console.log(token);
+     res.status(200).send({ msg: "successfullly login", token })
+    //  res.end();
+     
+    } catch (error) {
+     console.log(error);
+}
 }

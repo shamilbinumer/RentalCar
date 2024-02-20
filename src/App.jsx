@@ -13,8 +13,8 @@ function App() {
      <BrowserRouter>
      <Routes>
       <Route path='/' Component={IndexPage}/>
-      <Route path='/admin' Component={AdminReg}/>
-      <Route path='/adminlogin' Component={AdminLogin}/>
+      <Route path='/adminRegistration' Component={AdminReg}/>
+      <Route path='/admin' Component={AdminLogin}/>
      </Routes>
      </BrowserRouter>
     </>

@@ -1,0 +1,153 @@
+.adminLoginMain{
+    background: #E4D5C7;
+    height: 100vh;
+    padding-top: 8%;
+}
+.adminLoginMain{
+        .regCard{
+            width: 30%;
+            height: 380px;
+            background-color: #95877a;
+            margin: auto;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .regCard{
+            h2{
+                text-align: center;
+                font-size: 27px;
+                margin-top: 20px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #503924;
+            }
+            .inputs{
+                width: 90%;
+                margin: auto;
+                padding-top: 30px;
+                // background-color: red;
+            }
+            input{
+                width: 100%;
+                margin-bottom: 20px;
+                height: 40px;
+                padding-left: 20px;
+                border-radius: 6px;
+                border: none;
+            }
+            .gotoLogin{
+                text-align: center;
+                padding-top: 20px;
+            }
+            .goLogin{
+                // color: #503924;
+                color: white;
+            }
+            .btn{
+                text-align: center;
+                // background-color: red;
+                width: 100%;
+            }
+            button{
+                background-color: #E4D5C7;
+                width: 120px;
+                height: 40px;
+                font-weight: 700;
+                border: none;
+                text-align: center;
+                border-radius: 4px;
+            }
+        }
+
+
+        //////////////-media-query-///////////////
+        
+        @media(min-width:300px) and (max-width:575px){
+            .regCard{
+                height: 250px;
+                width: 80%;
+                margin-top: 160px;
+            }
+            .regCard{
+                h2{
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
+                .inputs{
+                    width: 90%;
+                    padding-top: 10px;
+                }
+                input{
+                    width: 100%;
+                    margin-bottom: 10px;
+                    height: 30px;
+                    border-radius: 2px;
+                }
+                input::placeholder{
+                    font-size: 14px;
+                }
+                .gotoLogin{
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .goLogin{
+                    // color: #503924;
+                    color: white;
+                }
+                .btn{
+                    text-align: center;
+                    // background-color: red;
+                    width: 100%;
+                }
+                button{
+                    font-size: 14px;
+                    width: 90px;
+                    height: 30px;
+                }
+            }
+        }
+        @media(min-width:576px) and (max-width:768px){
+            .regCard{
+                height: 250px;
+                width: 40%;
+                margin-top: 160px;
+            }
+            .regCard{
+                h2{
+                    font-size: 20px;
+                    margin-top: 10px;
+                }
+                .inputs{
+                    width: 90%;
+                    padding-top: 10px;
+                }
+                input{
+                    width: 100%;
+                    margin-bottom: 10px;
+                    height: 30px;
+                    border-radius: 2px;
+                }
+                input::placeholder{
+                    font-size: 14px;
+                }
+                .gotoLogin{
+                    text-align: center;
+                    padding-top: 10px;
+                }
+                .goLogin{
+                    // color: #503924;
+                    color: white;
+                }
+                .btn{
+                    text-align: center;
+                    // background-color: red;
+                    width: 100%;
+                }
+                button{
+                    font-size: 14px;
+                    width: 90px;
+                    height: 30px;
+                }
+            }
+        }
+}
