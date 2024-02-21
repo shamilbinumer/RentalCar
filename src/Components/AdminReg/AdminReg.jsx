@@ -40,7 +40,7 @@ const AdminReg = () => {
       const res=await axios.post("http://localhost:7000/rentelCar/addadmin",{...val})
      if(res){
       alert("Registered Successfully")
-      navigate("/admin")
+      navigate("/adminLogin")
      }
   }
 
@@ -59,7 +59,7 @@ const AdminReg = () => {
            </form>
        </div>
        <div className="gotoLogin">
-        <Link className='goLogin' to='/admin'>I have an Account</Link>
+        <Link className='goLogin' to='/adminLogin'>I have an Account</Link>
        </div>
 
       </div>

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+  // font-family: "Open Sans", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+// font-family: "Raleway", sans-serif;
+*{
+    margin: 0;
+    padding: 0;
+    // font-family: "Open Sans", sans-serif;
+    font-family: "Raleway", sans-serif;
+}
+.navbar{
+    width: 100%;
+    // height: 60px;
+    background-color: #E4D5C7;
+    text-align: right;
+    padding: 13px;
+}
+.AdminNavbar{
+    .offCanvas{
+        display: none;
+    }
+    .bar{
+        font-size: 25px;
+    }
+    .offcanvas-head{
+        display: flex;
+        justify-content: right;
+        padding-top: 20px;
+    }
+    .sgn-div{
+        // background-color: red;
+        padding-top: 6px;
+    }
+    .signinMobile{
+        margin-top: 20px !important;
+        margin-right: 10px;
+        // text-decoration: none;
+        font-weight: 800;
+        // background-color: #186049;
+        color: rgb(0, 0, 0);
+        padding: 10px 20px;
+        // margin: 10px;
+        letter-spacing: 2px;
+        border-radius: 7px;
+        font-size: 13px;
+        border: none;
+        transition: .2s;
+    }
+    .offcanvas{
+        width: 200px;
+    }
+    .navlinks{
+        // background-color: red;
+        width: 90%;
+        margin: auto;
+    }
+    .navlinks{
+        span{
+            font-weight: 700;
+        }
+       
+    }
+    .user{
+        font-size: 27px;
+        margin-right: 8px;
+        color: #186049;
+        cursor: pointer;
+    }
+    .navItems{
+        text-decoration: none;
+        color: black;
+        margin-right: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        font-size: 15px;
+    }
+    .navItems:hover{
+        color: #186049;
+    }
+    .LoginBtn{
+        margin-right: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        background-color: #186049;
+        color: white;
+        padding: 10px 20px;
+        // margin: 10px;
+        letter-spacing: 2px;
+        border-radius: 7px;
+        font-size: 13px;
+        border: none;
+        transition: .2s;
+    }
+    .LoginBtn:hover{
+        background-color: #247158;
+    }
+
+    ////////////////media-query////////////
+
+    @media(min-width:300px) and (max-width:576px){
+        .navbar{
+           display: none;
+           background-color: white;
+        }
+        .offCanvas{
+            display: inline;
+        }
+    }
+
+    @media(min-width:577px) and (max-width:768px){
+        .navbar{
+           display: none;
+           background-color: white;
+        }
+        .offCanvas{
+            display: inline;
+        }
+    }
+}
