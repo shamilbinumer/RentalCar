@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import './AddVehicle.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import axios from 'axios';
 
 const AddVehicle = () => {
-    // let Photo=""
+   const navigate=useNavigate()
     const [val,setVal]=useState({
         type:"",
         brand:"",
@@ -13,6 +13,7 @@ const AddVehicle = () => {
         yearOfRegistration:"",
         colour:"",
         fuel_type:"",
+        seatCapacity:"",
         rentPerDay:"",
         rentPerMonth:"",
         photo:""
@@ -60,6 +61,8 @@ const AddVehicle = () => {
         try {
             const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val});
             console.log(res.data);
+            alert("Vehicle Added")
+            navigate("/admin")
         } catch (error) {
             console.error("Error adding vehicle:", error);
            alert("Adding Failed,Please Try Again")
@@ -87,17 +90,19 @@ const AddVehicle = () => {
                     </div>
                     <div>
                         <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} />
-                       <select onChange={getData} name='fuel_type'>
-                        <option >Fuel Type</option>
-                            <option value="Petrol">Petrol</option>
-                            <option value="Diesel">Diesel</option>
-                        </select>
+                        <input type="text" placeholder='Seat Capacity' name='seatCapacity' onChange={getData} />
+                       
                     </div>
                     <div>
                         <input type="text" placeholder='Rent / Day' name='rentPerDay' onChange={getData} />
                         <input type="text" placeholder='Rent / Month' name='rentPerMonth' onChange={getData} />
                     </div>
-                    <div className='file-input'>
+                    <div>
+                    <select onChange={getData} name='fuel_type'>
+                        <option >Fuel Type</option>
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                        </select>
                         <input type="file" placeholder='photo' onChange={getImage} />
                     </div>
                     <div className="submit_btn">

@@ -6,6 +6,7 @@ const vehicle_schema=new mongoose.Schema({
     yearOfRegistration:{type:String},
     colour:{type:String},
     fuel_type:{type:String},
+    seatCapacity:{type:String},
     rentPerDay:{type:String},
     rentPerMonth:{type:String},
     photo:{type:String}
