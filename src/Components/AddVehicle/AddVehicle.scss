@@ -49,6 +49,9 @@
         input:focus {
            outline: none;
            }
+           select:focus{
+            outline: none;
+           }
            
         .file-input{
             // background-color: white;
@@ -57,6 +60,19 @@
             // padding-top: 6px;
 
             border-bottom: 2px solid #186049
+        }
+        .submit_btn{
+            padding-top: 24px;
+        }
+        .submit_btn{
+            button{
+                background-color: #186049;
+                color: white;
+                border: none;
+                width: 98.2%;
+                height: 40px;
+                // border-radius: 4px;
+            }
         }
         .file-input{
             input{

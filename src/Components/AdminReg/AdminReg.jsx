@@ -14,6 +14,8 @@ const AdminReg = () => {
         password:""
       })
 
+     
+
   const getData=(e)=>{
     setVal((pre)=>({...pre,[e.target.name]:e.target.value}))
     console.log(val);
