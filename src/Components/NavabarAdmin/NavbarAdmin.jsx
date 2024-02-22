@@ -54,13 +54,15 @@ const NavbarAdmin = () => {
 </div>
         </div>
 
+         {/* /////////mobile view navbar end//////////// */}
+
     <div className="navbar">
     <div className="navlinks">
         <Link className='navItems'>Home</Link>
         <Link className='navItems'>About</Link>
         <Link className='navItems'>Cars</Link>
         <Link className='navItems'>Bikes</Link>
-        <Link className='LoginBtn'>Add New Car/Bike</Link>
+        <Link className='LoginBtn' to='/addVehicle'>Add New Car/Bike</Link>
         {name===""?(  <Link className='LoginBtn' to='/adminLogin'>Sign In</Link>):(<span><RiLogoutCircleLine className='user' onClick={logout}/>{name}</span>)}
       
       </div>

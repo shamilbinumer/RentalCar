@@ -1,0 +1,67 @@
+.addVehicleMain{
+    height: 100vh;
+    background-color: #E4D5C7;
+}
+.addVehicleMain{
+    .back_btn{
+        padding: 10px;
+    }
+    .backBtn{
+        text-decoration: none;
+        color: #186049;
+        font-size: 40px;
+    }
+    .main_card{
+        // background-color: red;
+        height: auto;
+        width: 70%;
+        margin: auto;
+        // margin-top: 2%;
+        padding: 40px;
+    }
+    .main_card{
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    }
+    .inputs{
+        // background-color: red;
+        width: 90%;
+        margin: auto;
+    }
+    .inputs{
+        input,select{
+            width: 48.4%;
+            margin-bottom: 14px;
+            margin-right: 10px;
+            height: 40px;
+            padding-left: 10px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 2px solid #186049;
+            // margin: 4px;
+        }
+        input::placeholder{
+            color: #186049ca;
+            font-size: 16px;
+        }
+        input:focus {
+           outline: none;
+           }
+           
+        .file-input{
+            // background-color: white;
+            width: 98%;
+            height: 40px;
+            // padding-top: 6px;
+
+            border-bottom: 2px solid #186049
+        }
+        .file-input{
+            input{
+                border: none;
+            }
+        }
+    }
+}

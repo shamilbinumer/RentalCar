@@ -5,6 +5,7 @@ import IndexPage from './Components/IndexPage/IndexPage'
 import AdminReg from './Components/AdminReg/AdminReg'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import AdminHome from './Components/AdminHome/AdminHome'
+import AddVehicle from './Components/AddVehicle/AddVehicle'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <Route path='/adminRegistration' Component={AdminReg}/>
       <Route path='/adminLogin' Component={AdminLogin}/>
       <Route path='/admin' Component={AdminHome}/>
+      <Route path='/addVehicle' Component={AddVehicle}/>
      </Routes>
      </BrowserRouter>
     </>
