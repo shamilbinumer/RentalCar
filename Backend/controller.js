@@ -1,5 +1,6 @@
 import admin_schema from './Models/admin.model.js'
-import vehicle_schema from './Models/vehicle.model.js'
+import car_schema from './Models/car.model.js'
+import bike_schema from './Models/bike.model.js'
 import bcrypt from 'bcrypt'
 import pkg from "jsonwebtoken";
 const {sign}=pkg
@@ -73,10 +74,24 @@ export async function userAuth(req,res)
 
 //////////////add-vehicle///////////////
 
-export async function AddVehicle(req, res) {
+export async function AddCar(req, res) {
   try {
      const { ...vehicledetails } = req.body;
-    const task=await vehicle_schema.create({ ...vehicledetails });
+    const task=await car_schema.create({ ...vehicledetails });
+    console.log(task);
+    res.status(200).send({result : task});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+/////////////add bike//////////////////
+
+export async function AddBike(req, res) {
+  try {
+     const { ...vehicledetails } = req.body;
+    const task=await bike_schema.create({ ...vehicledetails });
     console.log(task);
     res.status(200).send({result : task});
   } catch (error) {

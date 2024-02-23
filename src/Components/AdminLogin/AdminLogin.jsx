@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AdminLogin.scss'
 import { Link, useNavigate } from 'react-router-dom'
+import { TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import axios from 'axios'
 
 const AdminLogin = () => {
@@ -34,6 +35,9 @@ const AdminLogin = () => {
 
   return (
     <div className='adminLoginMain'>
+       <div className="back_btn">
+        <Link to='/admin'><TbSquareRoundedArrowLeftFilled className='backBtn' /></Link>
+      </div>
        <div className="regCard">
         <h2>Admin Login</h2>
        <div className="inputs">

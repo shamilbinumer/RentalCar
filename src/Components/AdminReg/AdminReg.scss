@@ -1,13 +1,24 @@
 .adminRegMainDiv{
-    background: #E4D5C7;
     height: 100vh;
-    padding-top: 8%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.663),rgba(0, 0, 0, 0.663)),url(/bgCar.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .adminRegMainDiv{
+    .back_btn{
+        padding: 10px;
+        padding-bottom: 5%;
+    }
+    .backBtn{
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 40px;
+    }
     .regCard{
         width: 30%;
         height: 480px;
-        background-color: #95877a;
+        // background-color: #95877a;
         margin: auto;
         border-radius: 5px;
         padding: 15px;
@@ -19,7 +30,7 @@
             margin-top: 20px;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #503924;
+            color: #fafafa;
         }
         .inputs{
             width: 90%;
@@ -33,6 +44,11 @@
             padding-left: 20px;
             border-radius: 6px;
             border: none;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.382);
+        }
+        input:focus{
+            outline: none;
         }
         .gotoLogin{
             text-align: center;

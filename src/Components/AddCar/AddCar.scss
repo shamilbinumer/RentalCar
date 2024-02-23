@@ -1,6 +1,9 @@
 .addVehicleMain{
     height: 100vh;
-    background-color: #E4D5C7;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.663),rgba(0, 0, 0, 0.663)),url(/bgCar.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .addVehicleMain{
     .back_btn{
@@ -8,7 +11,7 @@
     }
     .backBtn{
         text-decoration: none;
-        color: #186049;
+        color: #ffffff;
         font-size: 40px;
     }
     .main_card{
@@ -23,6 +26,9 @@
         h2{
             text-align: center;
             margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
     }
     .inputs{
@@ -36,14 +42,24 @@
             margin-bottom: 14px;
             margin-right: 10px;
             height: 40px;
+            color: white;
             padding-left: 10px;
             border: none;
+            border-radius: 6px;
             background-color: transparent;
-            border-bottom: 2px solid #186049;
+            border: 1px solid #ffffff98;
             // margin: 4px;
         }
+        .file_input{
+            padding: 4px;
+        }
+        select{
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.393);
+            padding-right: 10px;
+        }
         input::placeholder{
-            color: #186049ca;
+            color: #ffffff77;
             font-size: 16px;
         }
         input:focus {
@@ -52,26 +68,18 @@
            select:focus{
             outline: none;
            }
-           
-        // .file-input{
-        //     // background-color: white;
-        //     width: 98%;
-        //     height: 40px;
-        //     // padding-top: 6px;
-
-        //     border-bottom: 2px solid #186049
-        // }
         .submit_btn{
             padding-top: 24px;
         }
         .submit_btn{
             button{
-                background-color: #186049;
-                color: white;
+                background-color: #ffffff;
+                color: rgb(0, 0, 0);
+                font-weight: 700;
                 border: none;
                 width: 98.2%;
                 height: 40px;
-                // border-radius: 4px;
+                border-radius: 6px;
             }
         }
         .file-input{

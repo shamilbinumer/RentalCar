@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './AdminReg.scss'
 import Navbar from '../Navbar/Navbar'
 import { Link, useNavigate } from 'react-router-dom'
+import { TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import axios from 'axios'
 
 
@@ -48,7 +49,9 @@ const AdminReg = () => {
 
   return (
     <div className='adminRegMainDiv'>
-      {/* <Navbar/> */}
+      <div className="back_btn">
+        <Link to='/admin'><TbSquareRoundedArrowLeftFilled className='backBtn' /></Link>
+      </div>
       <div className="regCard">
         <h2>Admin Registration</h2>
        <div className="inputs">

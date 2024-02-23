@@ -5,7 +5,8 @@ import IndexPage from './Components/IndexPage/IndexPage'
 import AdminReg from './Components/AdminReg/AdminReg'
 import AdminLogin from './Components/AdminLogin/AdminLogin'
 import AdminHome from './Components/AdminHome/AdminHome'
-import AddVehicle from './Components/AddVehicle/AddVehicle'
+import AddCar from './Components/AddCar/AddCar'
+import AddBike from './Components/AddBike/AddBike'
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
       <Route path='/adminRegistration' Component={AdminReg}/>
       <Route path='/adminLogin' Component={AdminLogin}/>
       <Route path='/admin' Component={AdminHome}/>
-      <Route path='/addVehicle' Component={AddVehicle}/>
+      <Route path='/addCar' Component={AddCar}/>
+      <Route path='/addBike' Component={AddBike}/>
      </Routes>
      </BrowserRouter>
     </>

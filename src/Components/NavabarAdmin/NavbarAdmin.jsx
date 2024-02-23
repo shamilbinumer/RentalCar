@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaBars } from "react-icons/fa";
 // import { FaUserCircle } from "react-icons/fa"; <FaUserCircle />
 import { RiLogoutCircleLine } from "react-icons/ri";
+
 import axios from 'axios';
 
 const NavbarAdmin = () => {
@@ -60,9 +61,9 @@ const NavbarAdmin = () => {
     <div className="navlinks">
         <Link className='navItems'>Home</Link>
         <Link className='navItems'>About</Link>
-        <Link className='navItems'>Cars</Link>
-        <Link className='navItems'>Bikes</Link>
-        <Link className='LoginBtn' to='/addVehicle'>Add New Car/Bike</Link>
+        <Link className='navItems'>Bookings</Link>
+        <Link className='LoginBtn' to='/addCar'>Add New Car</Link>
+        <Link className='LoginBtn' to='/addBike'>Add New Bike</Link>
         {name===""?(  <Link className='LoginBtn' to='/adminLogin'>Sign In</Link>):(<span><RiLogoutCircleLine className='user' onClick={logout}/>{name}</span>)}
       
       </div>

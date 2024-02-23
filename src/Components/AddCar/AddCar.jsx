@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import './AddVehicle.scss'
+import './AddCar.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import { TbSquareRoundedArrowLeftFilled } from "react-icons/tb";
 import axios from 'axios';
 
-const AddVehicle = () => {
+const AddCar = () => {
    const navigate=useNavigate()
     const [val,setVal]=useState({
-        type:"",
         brand:"",
         model:"",
         yearOfRegistration:"",
         colour:"",
         fuel_type:"",
+        transmision:"",
         seatCapacity:"",
         rentPerDay:"",
         rentPerMonth:"",
@@ -61,7 +61,7 @@ const AddVehicle = () => {
         try {
             const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val});
             console.log(res.data);
-            alert("Vehicle Added")
+            alert("Car Added SuccessFully")
             navigate("/admin")
         } catch (error) {
             console.error("Error adding vehicle:", error);
@@ -77,20 +77,24 @@ const AddVehicle = () => {
       </div>
       <div className="form">
         <div className="main_card">
-            <h2>Add New Vehicle</h2>
+            <h2>Add New Car</h2>
             <div className="inputs">
                 <form action="" onSubmit={addVehicle}>
                     <div>
-                        <input type="text" placeholder='Vehicle Type' name='type' onChange={getData} />
                         <input type="text" placeholder='Brand' name='brand' onChange={getData} />
+                        <input type="text" placeholder='Model Name' name='model' onChange={getData} />
                     </div>
                     <div>
-                        <input type="text" placeholder='Model Name' name='model' onChange={getData} />
+                    <input type="text" placeholder='Seat Capacity' name='seatCapacity' onChange={getData} />
                         <input type="text" placeholder='colour of Vehicle' name='colour' onChange={getData} />
                     </div>
                     <div>
                         <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} />
-                        <input type="text" placeholder='Seat Capacity' name='seatCapacity' onChange={getData} />
+                        <select onChange={getData} name='transmision'>
+                            <option >Gear Transmision</option>
+                            <option value="Manual">Manual</option>
+                            <option value="AutoMatic">AutoMatic</option>
+                        </select>
                        
                     </div>
                     <div>
@@ -103,10 +107,10 @@ const AddVehicle = () => {
                             <option value="Petrol">Petrol</option>
                             <option value="Diesel">Diesel</option>
                         </select>
-                        <input type="file" placeholder='photo' onChange={getImage} />
+                        <input type="file" placeholder='photo' onChange={getImage} className='file_input' />
                     </div>
                     <div className="submit_btn">
-                        <button>Add Vehicle</button>
+                        <button>Add Car</button>
                     </div>
                 </form>
             </div>
@@ -116,4 +120,4 @@ const AddVehicle = () => {
   )
 }
 
-export default AddVehicle
+export default AddCar
