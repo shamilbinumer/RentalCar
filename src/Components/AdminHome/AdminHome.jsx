@@ -1,5 +1,6 @@
 import React from 'react'
 import './AdminHome.scss'
+import { FaBars } from "react-icons/fa";
 import axios from 'axios'
 
 const AdminHome = () => {
@@ -8,7 +9,8 @@ const AdminHome = () => {
       <div className="nav-bar">
 
       </div>
-      <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button>
+      {/* <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button> */}
+      <FaBars className='bar-btn'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"  />
 
       <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         <div className="offcanvas-header">
