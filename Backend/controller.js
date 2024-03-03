@@ -99,3 +99,17 @@ export async function AddBike(req, res) {
     res.status(500).send("Internal Server Error");
   }
 }
+
+/////////////get All Car//////////////
+
+export async function getAllCar(req,res){
+  let task=await car_schema.find()
+  res.status(200).send(task)
+}
+
+/////////////get All Bike//////////////
+
+export async function getAllBike(req,res){
+  let task=await bike_schema.find()
+  res.status(200).send(task)
+}

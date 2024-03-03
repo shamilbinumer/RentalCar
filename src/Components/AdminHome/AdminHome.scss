@@ -96,7 +96,7 @@
         }
         .mainBody{
             width: 90%;
-            height: 50vh;
+            height: auto;
             padding: 15px;
             // background-color: yellow;
             margin: auto;
@@ -129,10 +129,6 @@
                 tr{
                     border-bottom: 1px solid rgb(208, 208, 208);
                 }
-                .status{
-                    background-color: green;
-                    color: white;
-                }
                 .fa{
                     margin-right: 10px;
                     font-size: 20px;
@@ -155,7 +151,7 @@
                     color: white; 
                 }
                 img{
-                    width: 100px;
+                    width: 90px;
                 }
             }
         }

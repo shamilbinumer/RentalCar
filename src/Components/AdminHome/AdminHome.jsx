@@ -9,7 +9,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const AdminHome = () => {
+  // http://localhost:7000/rentelCar/getAllbike
   const [name, setName] = useState('');
+  const [bike,setBike]=useState([])
+  const [car,setCar]=useState([])
+  const [selectedType, setSelectedType] = useState('bike');
   const value = JSON.parse(localStorage.getItem('admin_token'));
 
   const getName = async () => {
@@ -23,10 +27,6 @@ const AdminHome = () => {
     }
   };
 
-  useEffect(() => {
-    getName();
-  }, []);
-
   const Logout = () => {
     const confirmLogout = window.confirm('Are you sure you want to log out?');
     if (confirmLogout) {
@@ -35,6 +35,43 @@ const AdminHome = () => {
     }
   };
 
+  const getAllBike=async()=>{
+    const res=await axios.get("http://localhost:7000/rentelCar/getAllbike")
+    setBike(res.data)
+    console.log(bike);
+  }
+
+
+  const getAllCar=async()=>{
+    const res=await axios.get("http://localhost:7000/rentelCar/getAllCar")
+    setCar(res.data)
+    console.log(car);
+  }
+
+  useEffect(() => {
+    getName();
+    getAllBike();
+    getAllCar();
+  }, []);
+
+  useEffect(() => {
+    // Determine the selected type based on the URL pathname
+    const pathname = location.pathname;
+    if (pathname === '/addBike') {
+      setSelectedType('bike');
+    } else if (pathname === '/addCar') {
+      setSelectedType('car');
+    } else {
+      // Default to 'bike' if the pathname is neither '/addBike' nor '/addCar'
+      setSelectedType('bike');
+    }
+  }, [location.pathname]);
+
+
+  const handleSelectChange = (event) => {
+    setSelectedType(event.target.value);
+    console.log(event.target.value);
+  };
   return name === '' ? (
     <div className='unauth-text'><div><MdError className='err-icon' /></div>Unauthorized Access <div><Link className='gotoLogin' to='/adminLogin'>Login</Link></div> </div>
   ) : (
@@ -93,13 +130,15 @@ const AdminHome = () => {
         </div>
         <div className="mainBody">
           <div className="addVehicleBtnSection">
-            <select name="" id="">
-              <option value="">--select type--</option>
-              <option value="">Bike</option>
-              <option value="">Car</option>
+            <select name="" id="" value={selectedType} onChange={handleSelectChange}>
+              <option value="bike">Bike</option>
+              <option value="car">Car</option>
             </select>
-            <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
-            <Link className='addVehicleBtn' to='/addBike'>Add bike</Link>
+            <Link className='addVehicleBtn' to={selectedType === 'car' ? '/addCar' : '/addBike'}>
+              Add {selectedType === 'car' ? 'Car' : 'Bike'}
+            </Link>
+            {/* <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
+            <Link className='addVehicleBtn' to='/addBike'>Add bike</Link> */}
           </div>
           <div className="tableMain">
           <table className="table table-striped" border='1'>
@@ -113,19 +152,21 @@ const AdminHome = () => {
             </tr>
 
             {/* ///////////////map///////////// */}
-            <tr>
-              <td>1</td>
-              <td>Innova Crysta</td>
-              <td>Car</td>
-              <td><img src="./car.png" alt="" /></td>
-              <td className='status'>Active</td>
-              <td>
-                <i className="fa fa-ban" aria-hidden="true"></i>
-                <i className="fa fa-edit" aria-hidden="true"></i>
-                <i className="fa fa-trash" aria-hidden="true"></i>
-                <i className="fa fa-eye" aria-hidden="true"></i>
-              </td>
-            </tr>
+            {(selectedType === 'bike' ? bike : car).map((vehicle, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{vehicle.model}</td>
+                    <td>{vehicle.type}</td>
+                    <td><img src={vehicle.photo} alt="" /></td>
+                    <td className='status'>{vehicle.isActive ? (<span>Active</span>) : (<span>Bloked</span>)}</td>
+                    <td>
+                      <i className="fa fa-ban" aria-hidden="true"></i>
+                      <i className="fa fa-edit" aria-hidden="true"></i>
+                      <i className="fa fa-trash" aria-hidden="true"></i>
+                      <i className="fa fa-eye" aria-hidden="true"></i>
+                    </td>
+                  </tr>
+                ))}
              {/* ///////////////map///////////// */}
 
             

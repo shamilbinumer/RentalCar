@@ -9,6 +9,8 @@ router.route("/adminlogin").post(controller.AdminLogin);
 router.route("/userAuth").get(Auth,controller.userAuth);
 router.route("/addvehicle").post(controller.AddCar);
 router.route("/addBike").post(controller.AddBike);
+router.route("/getAllCar").get(controller.getAllCar);
+router.route("/getAllBike").get(controller.getAllBike);
 
 
 export default router;
