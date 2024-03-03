@@ -1,3 +1,20 @@
+.unauth-text{
+    padding-top: 17%;
+    text-align: center;
+    font-size: 30px;
+    // background-color: red;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+.unauth-text{
+    .err-icon{
+        color: red;
+        font-size: 45px;
+    }
+    .gotoLogin{
+        text-decoration: none;
+    }
+}
+
 .adminHomeMainDiv{
     .nav-bar{
         display: flex;
@@ -8,6 +25,7 @@
         background-color: rgb(255, 255, 255);
         box-shadow: -1px 8px 13px -12px rgba(0,0,0,0.75);
     }
+   
     .nav-bar{
         .bar-btn{
             font-size: 25px;
@@ -16,7 +34,7 @@
         span{
             font-size: 20px;
             font-weight: 800;
-            margin-right: 24px;
+            margin-left: 24px;
         }
         .user_icon{
             font-size: 30px;
@@ -25,8 +43,75 @@
             margin-left: 82%;
             width: 250px;
         }
+        .logout-icon{
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        p{
+            cursor: pointer;
+        }
+        .editPrfl{
+            text-decoration: none;
+            color: black;
+        }
+        .editPrfl-icon{
+            font-size: 20px;
+            margin-right: 10px;
+        }
     }
     .offcanvas{
         width: 300px;
     }
+    .body{
+        .welcomeTodashText{
+            font-size: 20px;
+            margin-left: 8%;
+            margin-top: 2%;
+        }
+        .basicDetails{
+            padding-top: 3%;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .basicDetailsCard{
+            width: 25%;
+            height: 100px;
+            padding: 20px;
+            // background-color: yellow;
+            box-shadow: -1px 1px 15px -5px rgba(0,0,0,0.75);
+        }
+        .basicDetailsCard{
+            h5{
+                font-weight: 700;
+                margin-bottom: 0 !important;
+            }
+            p{
+                font-size: 30px;
+                font-family: "Roboto", sans-serif;
+            }
+        }
+        .mainBody{
+            width: 90%;
+            height: 50vh;
+            padding: 15px;
+            // background-color: yellow;
+            margin: auto;
+            margin-top: 40px !important;
+            box-shadow: -1px 1px 15px -5px rgba(0,0,0,0.75);
+            text-align: right;
+        }
+        .mainBody{
+            .addVehicleBtn{
+                text-decoration: none;
+                background-color: rgb(6, 124, 6);
+                color: white;
+                padding: 5px 30px;
+                margin-right: 10px;
+                font-weight: 700;
+                border-radius: 3px;
+            }
+        }
+    }
+
 }

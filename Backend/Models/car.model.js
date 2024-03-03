@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const car_schema=new mongoose.Schema({
     brand:{type:String},
     model:{type:String},
+    isActive:{type:Boolean},
     yearOfRegistration:{type:String},
     transmision:{type:String},
     colour:{type:String},

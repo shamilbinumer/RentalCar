@@ -11,6 +11,7 @@ const AddCar = () => {
         model:"",
         yearOfRegistration:"",
         colour:"",
+        isActive:"",
         fuel_type:"",
         transmision:"",
         seatCapacity:"",
@@ -54,12 +55,8 @@ const AddCar = () => {
 
     const addVehicle = async (e) => {
         e.preventDefault();
-        if (Object.values(val).some(value => value === "")) {
-            alert("Please enter all details");
-            return;
-        }
         try {
-            const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val});
+            const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val,isActive:true});
             console.log(res.data);
             alert("Car Added SuccessFully")
             navigate("/admin")
@@ -81,16 +78,16 @@ const AddCar = () => {
             <div className="inputs">
                 <form action="" onSubmit={addVehicle}>
                     <div>
-                        <input type="text" placeholder='Brand' name='brand' onChange={getData} />
-                        <input type="text" placeholder='Model Name' name='model' onChange={getData} />
+                        <input type="text" placeholder='Brand' name='brand' onChange={getData} required />
+                        <input type="text" placeholder='Model Name' name='model' onChange={getData} required />
                     </div>
                     <div>
-                    <input type="text" placeholder='Seat Capacity' name='seatCapacity' onChange={getData} />
-                        <input type="text" placeholder='colour of Vehicle' name='colour' onChange={getData} />
+                    <input type="text" placeholder='Seat Capacity' name='seatCapacity' onChange={getData} required />
+                        <input type="text" placeholder='colour of Vehicle' name='colour' onChange={getData} required />
                     </div>
                     <div>
-                        <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} />
-                        <select onChange={getData} name='transmision'>
+                        <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} required/>
+                        <select onChange={getData} name='transmision' required>
                             <option >Gear Transmision</option>
                             <option value="Manual">Manual</option>
                             <option value="AutoMatic">AutoMatic</option>
@@ -98,16 +95,16 @@ const AddCar = () => {
                        
                     </div>
                     <div>
-                        <input type="text" placeholder='Rent / Day' name='rentPerDay' onChange={getData} />
-                        <input type="text" placeholder='Rent / Month' name='rentPerMonth' onChange={getData} />
+                        <input type="text" placeholder='Rent / Day' name='rentPerDay' onChange={getData} required />
+                        <input type="text" placeholder='Rent / Month' name='rentPerMonth' onChange={getData} required />
                     </div>
                     <div>
-                    <select onChange={getData} name='fuel_type'>
+                    <select onChange={getData} name='fuel_type' required>
                         <option >Fuel Type</option>
                             <option value="Petrol">Petrol</option>
                             <option value="Diesel">Diesel</option>
                         </select>
-                        <input type="file" placeholder='photo' onChange={getImage} className='file_input' />
+                        <input type="file" placeholder='photo' onChange={getImage} className='file_input'  required/>
                     </div>
                     <div className="submit_btn">
                         <button>Add Car</button>

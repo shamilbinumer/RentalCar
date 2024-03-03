@@ -57,7 +57,7 @@ const AdminReg = () => {
        <div className="inputs">
            <form action="" onSubmit={addAdmin}>
            <div><input type="text" placeholder='Username' name='username' onChange={getData} /></div>
-            <div><input type="text" placeholder='Email' name='email' onChange={getData}  /></div>
+            <div><input type="email" placeholder='Email' name='email' onChange={getData}  /></div>
             <div><input type="text" placeholder='Phone Number' name='phone' onChange={getData}  /></div>
             <div><input type="text" placeholder='Password' name='password' onChange={getData}  /></div>
             <div className="btn"><button>Sign Up</button></div>

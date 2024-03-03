@@ -9,6 +9,7 @@ const AddBike = () => {
     const [val,setVal]=useState({
         brand:"",
         model:"",
+        isActive:"",
         yearOfRegistration:"",
         colour:"",
         rentPerDay:"",
@@ -51,12 +52,12 @@ const AddBike = () => {
 
     const addVehicle = async (e) => {
         e.preventDefault();
-        if (Object.values(val).some(value => value === "")) {
-            alert("Please enter all details");
-            return;
-        }
+        // if (Object.values(val).some(value => value === "")) {
+        //     alert("Please enter all details");
+        //     return;
+        // }
         try {
-            const res = await axios.post("http://localhost:7000/rentelCar/addBike", {...val});
+            const res = await axios.post("http://localhost:7000/rentelCar/addBike", {...val,isActive:true});
             console.log(res.data);
             alert("Vehicle Added")
             navigate("/admin")
@@ -78,19 +79,19 @@ const AddBike = () => {
           <div className="inputs">
               <form action="" onSubmit={addVehicle}>
                   <div>
-                      <input type="text" placeholder='Brand' name='brand' onChange={getData} />
-                      <input type="text" placeholder='Model Name' name='model' onChange={getData} />
+                      <input type="text" placeholder='Brand' name='brand' onChange={getData} required />
+                      <input type="text" placeholder='Model Name' name='model' onChange={getData} required/>
                   </div>
                   <div>
-                      <input type="text" placeholder='colour of Vehicle' name='colour' onChange={getData} />
-                      <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} />
+                      <input type="text" placeholder='colour of Vehicle' name='colour' onChange={getData} required/>
+                      <input type="text" placeholder='Year of Registration' name='yearOfRegistration' onChange={getData} required />
                   </div>
                   <div>
-                      <input type="text" placeholder='Rent / Day' name='rentPerDay' onChange={getData} />
-                      <input type="text" placeholder='Rent / Month' name='rentPerMonth' onChange={getData} />
+                      <input type="text" placeholder='Rent / Day' name='rentPerDay' onChange={getData} required/>
+                      <input type="text" placeholder='Rent / Month' name='rentPerMonth' onChange={getData} required/>
                   </div>
                   <div>
-                      <input type="file" placeholder='photo' onChange={getImage} className='file_input' />
+                      <input type="file" placeholder='photo' onChange={getImage} className='file_input' required />
                   </div>
                   <div className="submit_btn">
                       <button>Add Bike</button>
