@@ -6,7 +6,7 @@
         width: 100%;
         padding: 14px;
         background-color: rgb(255, 255, 255);
-        box-shadow: -1px 8px 19px -12px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 13px -12px rgba(0,0,0,0.75);
     }
     .nav-bar{
         .bar-btn{
@@ -20,6 +20,10 @@
         }
         .user_icon{
             font-size: 30px;
+        }
+        .modal-dialog{
+            margin-left: 82%;
+            width: 250px;
         }
     }
     .offcanvas{

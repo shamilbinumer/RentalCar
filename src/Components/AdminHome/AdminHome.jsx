@@ -5,11 +5,35 @@ import { FaUserCircle } from "react-icons/fa";
 import axios from 'axios'
 
 const AdminHome = () => {
+  
   return (
     <div className='adminHomeMainDiv'>
       <div className="nav-bar">
      <div><span>My Car</span> <FaBars className='bar-btn'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"  /></div>
-     <div><FaUserCircle className='user_icon'/></div>
+     <div>
+      <FaUserCircle className='user_icon'  data-bs-toggle="modal" data-bs-target="#exampleModal"/>
+      
+{/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> */}
+
+{/* <!-- Modal --> */}
+<div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        <p>wedhejkh</p>
+        <p>wedhejkh</p>
+        <p>wedhejkh</p>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
       </div>
       {/* <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button> */}
       
