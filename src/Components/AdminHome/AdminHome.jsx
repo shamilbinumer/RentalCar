@@ -7,14 +7,15 @@ const AdminHome = () => {
   return (
     <div className='adminHomeMainDiv'>
       <div className="nav-bar">
-
+     <div><span>My Car</span> <FaBars className='bar-btn'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"  /></div>
+     <div></div>
       </div>
       {/* <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button> */}
-      <FaBars className='bar-btn'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"  />
+      
 
       <div className="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
         <div className="offcanvas-header">
-          <h5 className="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+          <h5 className="offcanvas-title" id="offcanvasScrollingLabel">My Car</h5>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
