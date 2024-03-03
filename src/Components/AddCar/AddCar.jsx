@@ -7,6 +7,7 @@ import axios from 'axios';
 const AddCar = () => {
    const navigate=useNavigate()
     const [val,setVal]=useState({
+        type:"",
         brand:"",
         model:"",
         yearOfRegistration:"",
@@ -56,7 +57,7 @@ const AddCar = () => {
     const addVehicle = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val,isActive:true});
+            const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val,type:"car",isActive:true});
             console.log(res.data);
             alert("Car Added SuccessFully")
             navigate("/admin")

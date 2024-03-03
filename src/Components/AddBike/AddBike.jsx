@@ -7,6 +7,7 @@ import axios from 'axios';
 const AddBike = () => {
     const navigate=useNavigate()
     const [val,setVal]=useState({
+        type:"",
         brand:"",
         model:"",
         isActive:"",
@@ -57,7 +58,7 @@ const AddBike = () => {
         //     return;
         // }
         try {
-            const res = await axios.post("http://localhost:7000/rentelCar/addBike", {...val,isActive:true});
+            const res = await axios.post("http://localhost:7000/rentelCar/addBike", {...val,type:"bike",isActive:true});
             console.log(res.data);
             alert("Vehicle Added")
             navigate("/admin")

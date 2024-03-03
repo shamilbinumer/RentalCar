@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const bike_schema=new mongoose.Schema({
+    type:{type:String},
     brand:{type:String},
     model:{type:String},
     isActive:{type:Boolean},

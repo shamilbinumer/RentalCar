@@ -4,6 +4,7 @@ import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { TbLogout2 } from 'react-icons/tb';
 import { MdError } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import { MdBlock } from "react-icons/md";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -71,7 +72,10 @@ const AdminHome = () => {
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
-          <p>Try scrolling the rest of the page to see this option in action.</p>
+        <div> <Link className='off'>Dasbord</Link></div>
+        <div> <Link>Category</Link></div>
+        <div> <Link>Cars</Link></div>
+        <div> <Link>Bikes</Link></div>
         </div>
       </div>
 
@@ -89,8 +93,43 @@ const AdminHome = () => {
         </div>
         <div className="mainBody">
           <div className="addVehicleBtnSection">
+            <select name="" id="">
+              <option value="">--select type--</option>
+              <option value="">Bike</option>
+              <option value="">Car</option>
+            </select>
             <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
             <Link className='addVehicleBtn' to='/addBike'>Add bike</Link>
+          </div>
+          <div className="tableMain">
+          <table className="table table-striped" border='1'>
+            <tr>
+              <th>#</th>
+              <th>NAME</th>
+              <th>TYPE</th>
+              <th>IMAGE</th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+
+            {/* ///////////////map///////////// */}
+            <tr>
+              <td>1</td>
+              <td>Innova Crysta</td>
+              <td>Car</td>
+              <td><img src="./car.png" alt="" /></td>
+              <td className='status'>Active</td>
+              <td>
+                <i className="fa fa-ban" aria-hidden="true"></i>
+                <i className="fa fa-edit" aria-hidden="true"></i>
+                <i className="fa fa-trash" aria-hidden="true"></i>
+                <i className="fa fa-eye" aria-hidden="true"></i>
+              </td>
+            </tr>
+             {/* ///////////////map///////////// */}
+
+            
+        </table>
           </div>
         </div>
       </div>
