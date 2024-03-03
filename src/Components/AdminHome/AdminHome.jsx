@@ -1,6 +1,7 @@
 import React from 'react'
 import './AdminHome.scss'
 import { FaBars } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import axios from 'axios'
 
 const AdminHome = () => {
@@ -8,7 +9,7 @@ const AdminHome = () => {
     <div className='adminHomeMainDiv'>
       <div className="nav-bar">
      <div><span>My Car</span> <FaBars className='bar-btn'  data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"  /></div>
-     <div></div>
+     <div><FaUserCircle className='user_icon'/></div>
       </div>
       {/* <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Enable body scrolling</button> */}
       
