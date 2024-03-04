@@ -209,7 +209,7 @@ const AdminHome = () => {
                   <td>
                     <div className="icons">
                       <div> <i className="fa fa-ban" aria-hidden="true"></i></div>
-                      <div> <i className="fa fa-edit" aria-hidden="true"></i></div>
+                      <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
                       <div> <i className="fa fa-trash" aria-hidden="true" onClick={()=>deleteItem(vehicle.type,vehicle._id)}></i></div>
                       <div>
                         <i className="fa fa-eye" aria-hidden="true" onClick={() => getDetailsOfVehicle(vehicle.type,vehicle._id)} data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>

@@ -7,6 +7,8 @@ import AdminLogin from './Components/AdminLogin/AdminLogin'
 import AdminHome from './Components/AdminHome/AdminHome'
 import AddCar from './Components/AddCar/AddCar'
 import AddBike from './Components/AddBike/AddBike'
+import EditCar from './Components/EditCar/EditCar'
+import EditBike from './Components/EditBike/EditBike'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
       <Route path='/admin' Component={AdminHome}/>
       <Route path='/addCar' Component={AddCar}/>
       <Route path='/addBike' Component={AddBike}/>
+      <Route path='/editCar/:type/:id' Component={EditCar}/>
+      <Route path='/editBike/:type/:id' Component={EditBike}/>
      </Routes>
      </BrowserRouter>
     </>

@@ -1,0 +1,102 @@
+.editCarMainDiv{
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.663),rgba(0, 0, 0, 0.663)),url(/bgCar.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.editCarMainDiv{
+    .back_btn{
+        padding: 10px;
+    }
+    .backBtn{
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 40px;
+    }
+    .main_card{
+        // background-color: red;
+        height: auto;
+        width: 70%;
+        margin: auto;
+        // margin-top: 2%;
+        padding: 40px;
+    }
+    .main_card{
+        h2{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    }
+    .inputs{
+        // background-color: red;
+        width: 90%;
+        margin: auto;
+    }
+    .inputs{
+        input,select{
+            width: 48.4%;
+            margin-bottom: 14px;
+            margin-right: 10px;
+            height: 40px;
+            color: white;
+            padding-left: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: transparent;
+            border: 1px solid #ffffff98;
+            // margin: 4px;
+        }
+        .file_input{
+            padding: 4px;
+        }
+        select{
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.393);
+            padding-right: 10px;
+        }
+        input::placeholder{
+            color: #ffffff77;
+            font-size: 16px;
+        }
+        input:focus {
+           outline: none;
+           }
+           select:focus{
+            outline: none;
+           }
+        .submit_btn{
+            padding-top: 24px;
+        }
+        .submit_btn{
+            button{
+                background-color: #ffffff;
+                color: rgb(0, 0, 0);
+                font-weight: 700;
+                border: none;
+                width: 98.2%;
+                height: 40px;
+                border-radius: 6px;
+            }
+        }
+        .file-input{
+            // input{
+            //     border: none;
+            // }
+        }
+        .photo{
+            width: 250px;
+            height: 150px;
+            // background-color: white;
+            margin: auto;
+        }
+        .photo{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}
