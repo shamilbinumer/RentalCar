@@ -129,6 +129,10 @@
                 tr{
                     border-bottom: 1px solid rgb(208, 208, 208);
                 }
+               
+                th{
+                    height: 50px;
+                }
                 .active{
                     background-color: green;
                     padding: 4px 20px;
@@ -137,6 +141,7 @@
                 }
                 .icons{
                     display: flex;
+                    justify-content: center;
                     flex-wrap: nowrap;
                 }
                 .blocked{
@@ -191,8 +196,12 @@
         .mainBody{
             overflow: scroll;
         }
+        .addVehicleBtn{
+        font-size: 12px;
+        }
         select{
             width: 90px !important;
+            height: 24px !important;
         }
         .tableMain{
             .fa{
@@ -200,7 +209,8 @@
             }
             th{
                 font-size: 13px !important;
-                width: 1900px !important;
+               width: 30% !important;
+            
             }
             td{
                 font-size: 12px !important;

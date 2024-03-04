@@ -144,7 +144,7 @@ const AdminHome = () => {
           <div className="tableMain">
             <table className="table table-striped" border='1'>
               <tr>
-                <th>#</th>
+                <th className='th'>#</th>
                 <th>NAME</th>
                 <th>TYPE</th>
                 <th>IMAGE</th>
@@ -165,7 +165,28 @@ const AdminHome = () => {
                       <div> <i className="fa fa-ban" aria-hidden="true"></i></div>
                       <div> <i className="fa fa-edit" aria-hidden="true"></i></div>
                       <div> <i className="fa fa-trash" aria-hidden="true"></i></div>
-                      <div><i className="fa fa-eye" aria-hidden="true"></i></div>
+                      <div>
+                        <i className="fa fa-eye" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+        
+
+{/* <!-- Modal --> */}
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        ...
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+                        </div>
                     </div>
                   </td>
                 </tr>
