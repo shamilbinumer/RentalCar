@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom';
 const AdminHome = () => {
   // http://localhost:7000/rentelCar/getAllbike
   const [name, setName] = useState('');
-  const [bike,setBike]=useState([])
-  const [car,setCar]=useState([])
+  const [bike, setBike] = useState([])
+  const [car, setCar] = useState([])
   const [selectedType, setSelectedType] = useState('bike');
   const value = JSON.parse(localStorage.getItem('admin_token'));
 
@@ -35,15 +35,15 @@ const AdminHome = () => {
     }
   };
 
-  const getAllBike=async()=>{
-    const res=await axios.get("http://localhost:7000/rentelCar/getAllbike")
+  const getAllBike = async () => {
+    const res = await axios.get("http://localhost:7000/rentelCar/getAllbike")
     setBike(res.data)
     console.log(bike);
   }
 
 
-  const getAllCar=async()=>{
-    const res=await axios.get("http://localhost:7000/rentelCar/getAllCar")
+  const getAllCar = async () => {
+    const res = await axios.get("http://localhost:7000/rentelCar/getAllCar")
     setCar(res.data)
     console.log(car);
   }
@@ -109,10 +109,10 @@ const AdminHome = () => {
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
-        <div> <Link className='off'>Dasbord</Link></div>
-        <div> <Link>Category</Link></div>
-        <div> <Link>Cars</Link></div>
-        <div> <Link>Bikes</Link></div>
+          <div> <Link className='off'>Dasbord</Link></div>
+          <div> <Link>Category</Link></div>
+          <div> <Link>Cars</Link></div>
+          <div> <Link>Bikes</Link></div>
         </div>
       </div>
 
@@ -124,13 +124,14 @@ const AdminHome = () => {
             <p>233</p>
           </div>
           <div className="basicDetailsCard">
-          <h5>Bookings</h5>
+            <h5>Bookings</h5>
             <p>302</p>
           </div>
         </div>
         <div className="mainBody">
           <div className="addVehicleBtnSection">
             <select name="" id="" value={selectedType} onChange={handleSelectChange}>
+              <option value="all">All</option>
               <option value="bike">Bike</option>
               <option value="car">Car</option>
             </select>
@@ -141,36 +142,38 @@ const AdminHome = () => {
             <Link className='addVehicleBtn' to='/addBike'>Add bike</Link> */}
           </div>
           <div className="tableMain">
-          <table className="table table-striped" border='1'>
-            <tr>
-              <th>#</th>
-              <th>NAME</th>
-              <th>TYPE</th>
-              <th>IMAGE</th>
-              <th>STATUS</th>
-              <th>ACTION</th>
-            </tr>
+            <table className="table table-striped" border='1'>
+              <tr>
+                <th>#</th>
+                <th>NAME</th>
+                <th>TYPE</th>
+                <th>IMAGE</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              </tr>
 
-            {/* ///////////////map///////////// */}
-            {(selectedType === 'bike' ? bike : car).map((vehicle, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{vehicle.model}</td>
-                    <td>{vehicle.type}</td>
-                    <td><img src={vehicle.photo} alt="" /></td>
-                    <td className='status'>{vehicle.isActive ? (<span>Active</span>) : (<span>Bloked</span>)}</td>
-                    <td>
-                      <i className="fa fa-ban" aria-hidden="true"></i>
-                      <i className="fa fa-edit" aria-hidden="true"></i>
-                      <i className="fa fa-trash" aria-hidden="true"></i>
-                      <i className="fa fa-eye" aria-hidden="true"></i>
-                    </td>
-                  </tr>
-                ))}
-             {/* ///////////////map///////////// */}
+              {/* ///////////////map///////////// */}
+              {(selectedType === 'all' ? [...bike, ...car] : selectedType === 'bike' ? bike : car).map((vehicle, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{vehicle.model}</td>
+                  <td>{vehicle.type}</td>
+                  <td><img src={vehicle.photo} alt="" /></td>
+                  <td className='status'>{vehicle.isActive ? (<span className='active'>Active</span>) : (<span className='blocked'>Blocked</span>)}</td>
+                  <td>
+                    <div className="icons">
+                      <div> <i className="fa fa-ban" aria-hidden="true"></i></div>
+                      <div> <i className="fa fa-edit" aria-hidden="true"></i></div>
+                      <div> <i className="fa fa-trash" aria-hidden="true"></i></div>
+                      <div><i className="fa fa-eye" aria-hidden="true"></i></div>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+              {/* ///////////////map///////////// */}
 
-            
-        </table>
+
+            </table>
           </div>
         </div>
       </div>
