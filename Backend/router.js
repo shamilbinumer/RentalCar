@@ -11,6 +11,9 @@ router.route("/addvehicle").post(controller.AddCar);
 router.route("/addBike").post(controller.AddBike);
 router.route("/getAllCar").get(controller.getAllCar);
 router.route("/getAllBike").get(controller.getAllBike);
+router.route("/getFullBikeDetails/:type/:id").get(controller.getVehicleDetails);
+router.route("/deleteItem/:type/:id").delete(controller.deleteVehicle);
+
 
 
 export default router;

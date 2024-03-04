@@ -113,3 +113,54 @@ export async function getAllBike(req,res){
   let task=await bike_schema.find()
   res.status(200).send(task)
 }
+
+///////////get full details of car/////////////
+
+export async function getVehicleDetails(req, res) {
+  const { id, type } = req.params; // Assuming you pass the type of vehicle (car or bike) as a parameter
+
+  try {
+    let task;
+    if (type === 'car') {
+      task = await car_schema.findOne({ _id: id });
+    } else if (type === 'bike') {
+      task = await bike_schema.findOne({ _id: id });
+    } else {
+      return res.status(400).json({ error: 'Invalid vehicle type' });
+    }
+
+    if (!task) {
+      return res.status(404).json({ error: 'Vehicle not found' });
+    }
+
+    res.status(200).json(task);
+  } catch (error) {
+    console.error('Error fetching vehicle details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+////////////////////delete vehicle////////////////////
+
+export async function deleteVehicle(req,res)
+{
+    const{id,type}=req.params;
+  try {
+    let task;
+    if(type==='car'){
+     task=await car_schema.deleteOne({_id:id});
+    } else if (type==='bike'){
+     task=await bike_schema.deleteOne({_id:id})
+    } else {
+     return res.status(400).json({error:'invalid vehicle type'})
+    }
+ 
+    if(!task){
+     return res.status(404).json({ error: 'Vehicle not found' });
+    }
+    res.status(200).json(task);
+  } catch (error) {
+    console.error('Error fetching vehicle details:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
