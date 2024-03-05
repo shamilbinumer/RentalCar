@@ -17,6 +17,8 @@
 
 .adminHomeMainDiv{
     .nav-bar{
+        position: sticky;
+        top: 0;
         display: flex;
         justify-content: space-between;
         height: 60px;
@@ -27,6 +29,14 @@
     }
    
     .nav-bar{
+        .logUotBtn{
+            border: none;
+            background-color: green;
+            margin-right: 10px;
+            color: white;
+            padding: 5px 20px;
+            font-weight: 700;
+        }
         .bar-btn{
             font-size: 25px;
             cursor: pointer;

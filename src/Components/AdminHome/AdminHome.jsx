@@ -20,7 +20,7 @@ const AdminHome = () => {
   const [name, setName] = useState('');
   const [vehicle, setVehicle] = useState([])
   // const [car, setCar] = useState([])
-  const [selectedType, setSelectedType] = useState('all');
+  const [selectedType, setSelectedType] = useState("all");
   const [modalDetails, setModalDetails] = useState(null);
   const value = JSON.parse(localStorage.getItem('admin_token'));
 
@@ -43,68 +43,38 @@ const AdminHome = () => {
     }
   };
 
-  const getAllRecods = async (type) => {
+
+  const handleSelectChange = (e) => {
+    setSelectedType(e.target.value);
+    getAllRecods(e.target.value); 
+  };
+
+  const getAllRecods = async (selectedType) => {
     try {
-      const res = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/${type}`);
-      setVehicle(res.data);
-      console.log(vehicle);
+      let url;
+      if (selectedType === 'all') {
+        console.log(selectedType);
+        const carRes = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/car`);
+        const bikeRes = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/bike`);
+        setVehicle([...carRes.data, ...bikeRes.data]);
+      } else {
+        url = `http://localhost:7000/rentelCar/getAllVehicle/${selectedType}`;
+        const res = await axios.get(url);
+        setVehicle(res.data);
+      }
     } catch (error) {
       console.error('Error fetching records:', error);
     }
   };
 
-  // const getAllRecods = async () => {
-  //   try {
-  //     let url;
-  //     if (selectedType === 'all') {
-  //       url = `http://localhost:7000/rentelCar/getAllVehicle`;
-  //     } else {
-  //       url = `http://localhost:7000/rentelCar/getAllVehicle/${selectedType}`;
-  //     }
-  //     const res = await axios.get(url);
-  //     setVehicle(res.data);
-  //     console.log(vehicle);
-  //   } catch (error) {
-  //     console.error('Error fetching records:', error);
-  //   }
-  // };
-
-  
 
 
 
-  useEffect(() => {
-    // Determine the selected type based on the URL pathname
-    const pathname = location.pathname;
-    if (pathname === '/addBike') {
-      setSelectedType('bike');
-    } else if (pathname === '/addCar') {
-      setSelectedType('car');
-    } else {
-      // Default to 'bike' if the pathname is neither '/addBike' nor '/addCar'
-      setSelectedType('bike');
-    }
-  }, [location.pathname]);
-
-
-  const handleSelectChange = (event) => {
-    setSelectedType(event.target.value);
-    getAllRecods(event.target.value);  // Fetch records based on the selected type
-  };
-
-  // const getDetailsOfBike = async (id) => {
-  //   try {
-  //     const res = await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${id}`);
-  //     setModalDetails(res.data); // Set the details fetched from the API
-  //   } catch (error) {
-  //     console.error('Error fetching bike details:', error);
-  //   }
-  // }
 
   const getDetailsOfVehicle = async (type, id) => {
     try {
       const res = await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${type}/${id}`);
-      setModalDetails(res.data); // Set the details fetched from the API
+      setModalDetails(res.data); 
     } catch (error) {
       console.error('Error fetching bike details:', error);
     }
@@ -140,9 +110,12 @@ const AdminHome = () => {
           <FaBars className="bar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" /> <span>My Car</span>
         </div>
         <div>
-          <FaUserCircle className="user_icon" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+        <button className='logUotBtn' onClick={Logout}>LOGOUT</button>
+          {/* <FaUserCircle className="user_icon" data-bs-toggle="modal" data-bs-target="#exampleModal" /> */}
+          
           <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog profile_modal">
+           
+            {/* <div className="modal-dialog profile_modal">
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -158,7 +131,7 @@ const AdminHome = () => {
                   <Link className='editPrfl'><FaRegEdit className='editPrfl-icon' />Edit Profile</Link>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -189,7 +162,7 @@ const AdminHome = () => {
         </div>
         <div className="mainBody">
           <div className="addVehicleBtnSection">
-            <select name="" id="" value={selectedType} onChange={handleSelectChange}>
+            <select name="type" id="" value={selectedType}  onChange={handleSelectChange}>
               <option value="all">All</option>
               <option value="bike">Bike</option>
               <option value="car">Car</option>
@@ -314,8 +287,6 @@ const AdminHome = () => {
                                         </div>
                                       </div>
                                     </div>
-                                    {/* <p>Name: {modalDetails.model}</p>
-                          <p>Type: {modalDetails.type}</p> */}
                                   </div>
                                 )}
                               </div>
