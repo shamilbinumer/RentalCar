@@ -18,8 +18,8 @@ import { Link } from 'react-router-dom';
 const AdminHome = () => {
   // http://localhost:7000/rentelCar/getAllbike
   const [name, setName] = useState('');
-  const [bike, setBike] = useState([])
-  const [car, setCar] = useState([])
+  const [vehicle, setVehicle] = useState([])
+  // const [car, setCar] = useState([])
   const [selectedType, setSelectedType] = useState('all');
   const [modalDetails, setModalDetails] = useState(null);
   const value = JSON.parse(localStorage.getItem('admin_token'));
@@ -43,18 +43,33 @@ const AdminHome = () => {
     }
   };
 
-  const getAllBike = async () => {
-    const res = await axios.get("http://localhost:7000/rentelCar/getAllbike")
-    setBike(res.data)
-    console.log(bike);
-  }
+  const getAllRecods = async (type) => {
+    try {
+      const res = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/${type}`);
+      setVehicle(res.data);
+      console.log(vehicle);
+    } catch (error) {
+      console.error('Error fetching records:', error);
+    }
+  };
 
+  // const getAllRecods = async () => {
+  //   try {
+  //     let url;
+  //     if (selectedType === 'all') {
+  //       url = `http://localhost:7000/rentelCar/getAllVehicle`;
+  //     } else {
+  //       url = `http://localhost:7000/rentelCar/getAllVehicle/${selectedType}`;
+  //     }
+  //     const res = await axios.get(url);
+  //     setVehicle(res.data);
+  //     console.log(vehicle);
+  //   } catch (error) {
+  //     console.error('Error fetching records:', error);
+  //   }
+  // };
 
-  const getAllCar = async () => {
-    const res = await axios.get("http://localhost:7000/rentelCar/getAllCar")
-    setCar(res.data)
-    console.log(car);
-  }
+  
 
 
 
@@ -74,7 +89,7 @@ const AdminHome = () => {
 
   const handleSelectChange = (event) => {
     setSelectedType(event.target.value);
-    console.log(event.target.value);
+    getAllRecods(event.target.value);  // Fetch records based on the selected type
   };
 
   // const getDetailsOfBike = async (id) => {
@@ -86,7 +101,7 @@ const AdminHome = () => {
   //   }
   // }
 
-  const getDetailsOfVehicle = async (type,id) => {
+  const getDetailsOfVehicle = async (type, id) => {
     try {
       const res = await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${type}/${id}`);
       setModalDetails(res.data); // Set the details fetched from the API
@@ -103,8 +118,7 @@ const AdminHome = () => {
       }
       const res = await axios.delete(`http://localhost:7000/rentelCar/deleteItem/${type}/${id}`);
       console.log(res.data);
-      getAllBike();
-      getAllCar();
+      getAllRecods()
     } catch (error) {
       console.log(error);
     }
@@ -114,8 +128,7 @@ const AdminHome = () => {
 
   useEffect(() => {
     getName();
-    getAllBike();
-    getAllCar();
+    getAllRecods()
   }, []);
 
   return name === '' ? (
@@ -129,7 +142,7 @@ const AdminHome = () => {
         <div>
           <FaUserCircle className="user_icon" data-bs-toggle="modal" data-bs-target="#exampleModal" />
           <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
+            <div className="modal-dialog profile_modal">
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="exampleModalLabel">
@@ -182,8 +195,8 @@ const AdminHome = () => {
               <option value="car">Car</option>
             </select>
             {/* <Link className='addVehicleBtn' to={selectedType === 'car' ? '/addCar' : '/addBike'}>
-              Add {selectedType === 'car' ? 'Car' : 'Bike'}
-            </Link> */}
+          Add {selectedType === 'car' ? 'Car' : 'Bike'}
+          </Link> */}
             <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
             <Link className='addVehicleBtn' to='/addBike'>Add bike</Link>
           </div>
@@ -199,7 +212,7 @@ const AdminHome = () => {
               </tr>
 
               {/* ///////////////map///////////// */}
-              {(selectedType === 'all' ? [...bike, ...car] : selectedType === 'bike' ? bike : car).map((vehicle, index) => (
+              {vehicle.map((vehicle, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{vehicle.model}</td>
@@ -210,9 +223,9 @@ const AdminHome = () => {
                     <div className="icons">
                       <div> <i className="fa fa-ban" aria-hidden="true"></i></div>
                       <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
-                      <div> <i className="fa fa-trash" aria-hidden="true" onClick={()=>deleteItem(vehicle.type,vehicle._id)}></i></div>
+                      <div> <i className="fa fa-trash" aria-hidden="true" onClick={() => deleteItem(vehicle.type, vehicle._id)}></i></div>
                       <div>
-                        <i className="fa fa-eye" aria-hidden="true" onClick={() => getDetailsOfVehicle(vehicle.type,vehicle._id)} data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+                        <i className="fa fa-eye" aria-hidden="true" onClick={() => getDetailsOfVehicle(vehicle.type, vehicle._id)} data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
 
 
                         {/* <!-- Modal --> */}
@@ -223,78 +236,78 @@ const AdminHome = () => {
                                 <h1 className="modal-title fs-5" id="staticBackdropLabel">Vehicle Details</h1>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <div className="modal-body">
+                              <div className="modal-body details-modal">
                                 {modalDetails && (
                                   <div>
                                     <div className="img"><img src={modalDetails.photo} alt="" /></div>
                                     <div className="row caardsMain">
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
                                           <TbBrandAppgallery className='modalIcons' />
                                           <p className="cardHeadig">Brand</p>
                                           <p>{modalDetails.brand}</p>
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <FaCarRear  className='modalIcons' />
+                                          <FaCarRear className='modalIcons' />
                                           <p className="cardHeadig">Model Name</p>
                                           <p>{modalDetails.model}</p>
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <CiCalendarDate  className='modalIcons' />
+                                          <CiCalendarDate className='modalIcons' />
                                           <p className="cardHeadig">Year of Reg</p>
                                           <p>{modalDetails.yearOfRegistration}</p>
                                         </div>
                                       </div>
                                     </div>
                                     <div className="row caardsMain">
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <GiGearStickPattern  className='modalIcons' />
+                                          <GiGearStickPattern className='modalIcons' />
                                           <p className="cardHeadig">Transmision</p>
                                           {/* <p>{modalDetails.brand}</p> */}
                                           <>
-                                          {modalDetails.type === 'bike' ? <p>Manual</p> : <p>{modalDetails.transmision}</p>}
+                                            {modalDetails.type === 'bike' ? <p>Manual</p> : <p>{modalDetails.transmision}</p>}
                                           </>
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <BiSolidColorFill  className='modalIcons' />
+                                          <BiSolidColorFill className='modalIcons' />
                                           <p className="cardHeadig">Colour</p>
                                           <p>{modalDetails.colour}</p>
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <BsFillFuelPumpFill  className='modalIcons' />
+                                          <BsFillFuelPumpFill className='modalIcons' />
                                           <p className="cardHeadig">Fuel Type</p>
                                           {modalDetails.type === 'bike' ? <p>Petrol</p> : <p>{modalDetails.fuel_type}</p>}
                                         </div>
                                       </div>
                                     </div>
                                     <div className="row caardsMain">
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <GiCarSeat  className='modalIcons' />
+                                          <GiCarSeat className='modalIcons' />
                                           <p className="cardHeadig">Seat Capacity</p>
                                           {modalDetails.type === 'bike' ? <p>2 Persons</p> : <p>{modalDetails.seatCapacity} Persons</p>}
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <TbBrandCashapp  className='modalIcons' />
+                                          <TbBrandCashapp className='modalIcons' />
                                           <p className="cardHeadig">Rent / Day</p>
                                           <p>₹ {modalDetails.rentPerDay}</p>
                                           <p></p>
                                         </div>
                                       </div>
-                                      <div className="col-lg-4 detailsCard">
+                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
                                         <div>
-                                          <TbBrandCashapp  className='modalIcons' />
+                                          <TbBrandCashapp className='modalIcons' />
                                           <p className="cardHeadig">Rent / Month</p>
                                           <p> ₹ {modalDetails.rentPerMonth}</p>
                                           <p></p>
@@ -302,13 +315,13 @@ const AdminHome = () => {
                                       </div>
                                     </div>
                                     {/* <p>Name: {modalDetails.model}</p>
-                                    <p>Type: {modalDetails.type}</p> */}
+                          <p>Type: {modalDetails.type}</p> */}
                                   </div>
                                 )}
                               </div>
-                              <div className="modal-footer">
+                              {/* <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </div>

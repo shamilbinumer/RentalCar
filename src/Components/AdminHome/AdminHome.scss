@@ -38,8 +38,9 @@
         }
         .user_icon{
             font-size: 30px;
+            cursor: pointer;
         }
-        .modal-dialog{
+        .profile_modal{
             margin-left: 82%;
             width: 250px;
         }
@@ -82,7 +83,7 @@
             height: 100px;
             padding: 20px;
             // background-color: yellow;
-            box-shadow: -1px 1px 15px -5px rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 20px 0px rgba(224, 224, 224, 0.75);
         }
         .basicDetailsCard{
             h5{
@@ -101,7 +102,7 @@
             // background-color: yellow;
             margin: auto;
             margin-top: 40px !important;
-            box-shadow: -1px 1px 15px -5px rgba(0,0,0,0.75);
+            box-shadow: 1px 1px 20px 0px rgba(194, 194, 194, 0.75);
             text-align: right;
             margin-bottom: 30px !important;
              border-radius: 6px;
@@ -178,8 +179,17 @@
                 }
                 img{
                     width: 90px;
+                }.modal-header{
+                    .modal-title{
+                        font-weight: 800;
+                        letter-spacing: 1px;
+                    }
                 }
-                .modal-body{
+                .details-modal{
+                    
+                    .img{
+                        margin-bottom: 22px;
+                    }
                     .img{
                         img{
                             width: 200px;
@@ -216,6 +226,11 @@
     @media (min-width:300px) and (max-width:576px){
         .basicDetails{
             display: inline !important;
+        }
+        .profile_modal{
+            margin-left: 39% !important;
+            margin-top: 4%;
+            width: 180px !important;
         }
         .basicDetailsCard{
             width: 90% !important;

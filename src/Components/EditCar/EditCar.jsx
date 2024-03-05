@@ -47,14 +47,19 @@ const EditCar = () => {
         console.log(val);
     }
 
-    const getImage=async(e)=>{
+    const getImage = async (e) => {
         const file = e.target.files[0];
         if (file) {
             const base64Image = await convertToBase64Banner(file);
-            setVal({ ...val, photo: base64Image });
+            // Check if there is already an image present
+            if (!val.photo) {
+                // If no image present, update the state with the selected image
+                setVal({ ...val, photo: base64Image });
+            }
+            // Otherwise, if an image is already present, don't update the state
             console.log(val.photo);
         }
-    }
+    };
 
     const getDetailsOfVehicle = async () => {
         try {
@@ -67,22 +72,24 @@ const EditCar = () => {
       }
 
 
-    const addVehicle = async (e) => {
+    const editCar = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:7000/rentelCar/addvehicle", {...val,type:"car",isActive:true});
+            const res = await axios.patch(`http://localhost:7000/rentelCar/editItem/${type}/${id}`, {...val});
             console.log(res.data);
-            alert("Car Added SuccessFully")
+            alert("Details Edited SuccessFully")
             navigate("/admin")
         } catch (error) {
             console.error("Error adding vehicle:", error);
-           alert("Adding Failed,Please Try Again")
+           alert("Editing Failed,Please Try Again")
         }
     };
 
     useEffect(()=>{
         getDetailsOfVehicle()
     },[])
+
+
   return (
     <div className='editCarMainDiv'>
        <div className="back_btn">
@@ -92,7 +99,7 @@ const EditCar = () => {
         <div className="main_card">
             <h2>Edit Car Details</h2>
             <div className="inputs">
-                <form action="" onSubmit={addVehicle}>
+                <form action="" onSubmit={editCar}>
                     <div>
                         <input type="text" placeholder='Brand' name='brand' onChange={getData} required value={val.brand} />
                         <input type="text" placeholder='Model Name' name='model' onChange={getData} required value={val.model} />
@@ -120,7 +127,7 @@ const EditCar = () => {
                             <option value="Petrol">Petrol</option>
                             <option value="Diesel">Diesel</option>
                         </select>
-                        <input type="file" placeholder='photo' onChange={getImage} className='file_input' required/>
+                        <input type="file" placeholder='photo' onChange={getImage} className='file_input' />
                         <div className="photo"><img src={val.photo} alt="" /></div>
                     </div>
                     <div className="submit_btn">

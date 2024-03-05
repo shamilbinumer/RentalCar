@@ -9,10 +9,10 @@ router.route("/adminlogin").post(controller.AdminLogin);
 router.route("/userAuth").get(Auth,controller.userAuth);
 router.route("/addvehicle").post(controller.AddCar);
 router.route("/addBike").post(controller.AddBike);
-router.route("/getAllCar").get(controller.getAllCar);
-router.route("/getAllBike").get(controller.getAllBike);
+router.route("/getAllVehicle/:type").get(controller.getAllRecords);
 router.route("/getFullBikeDetails/:type/:id").get(controller.getVehicleDetails);
 router.route("/deleteItem/:type/:id").delete(controller.deleteVehicle);
+router.route("/editItem/:type/:id").patch(controller.editDetails);
 
 
 

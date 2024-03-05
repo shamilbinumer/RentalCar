@@ -102,18 +102,24 @@ export async function AddBike(req, res) {
 
 /////////////get All Car//////////////
 
-export async function getAllCar(req,res){
-  let task=await car_schema.find()
-  res.status(200).send(task)
+export async function getAllRecords(req, res) {
+  const { type } = req.params;
+  try {
+      let schema;
+      if (type === 'car') {
+          schema = car_schema;
+      } else if (type === 'bike') {
+          schema = bike_schema;
+      } else {
+          return res.status(400).send('Invalid type specified');
+      }
+      
+      const records = await schema.find();
+      res.status(200).send(records);
+  } catch (error) {
+      res.status(500).send(error);
+  }
 }
-
-/////////////get All Bike//////////////
-
-export async function getAllBike(req,res){
-  let task=await bike_schema.find()
-  res.status(200).send(task)
-}
-
 ///////////get full details of car/////////////
 
 export async function getVehicleDetails(req, res) {
@@ -162,5 +168,27 @@ export async function deleteVehicle(req,res)
   } catch (error) {
     console.error('Error fetching vehicle details:', error);
     res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+///////////////////////edit VehicleDetails/////////////////////
+
+export async function editDetails(req, res) {
+  const { type, id } = req.params;
+  try {
+      let schema;
+      if (type === 'car') {
+          schema = car_schema;
+      } else if (type === 'bike') {
+          schema = bike_schema;
+      } else {
+          return res.status(400).send('Invalid type specified');
+      }
+      
+      const updatedData = req.body;
+      const value = await schema.updateOne({ _id: id }, { $set: updatedData });
+      res.status(200).send(value);
+  } catch (error) {
+      res.status(404).send(error);
   }
 }
