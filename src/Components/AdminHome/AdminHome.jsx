@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './AdminHome.scss';
+import { FiChevronRight } from "react-icons/fi";
 import { FaBars, FaUserCircle } from 'react-icons/fa';
 import { TbLogout2 } from 'react-icons/tb';
 import { MdError } from "react-icons/md";
@@ -88,18 +89,46 @@ const AdminHome = () => {
       }
       const res = await axios.delete(`http://localhost:7000/rentelCar/deleteItem/${type}/${id}`);
       console.log(res.data);
-      getAllRecods()
+      getAllRecods(selectedType);
     } catch (error) {
       console.log(error);
     }
   }
 
+  const changeStatus = async (type, id) => {
+    try {
+      const index = vehicle.findIndex(v => v._id === id);
+      if (index !== -1) {
+        const newStatus = !vehicle[index].isActive;
+        let confirmationMessage = '';
+        if (newStatus === true) {
+          confirmationMessage = 'Are you sure you want to activate this vehicle?';
+        } else {
+          confirmationMessage = 'Are you sure you want to block this vehicle?';
+        }
+        const confirmChange = window.confirm(confirmationMessage);
+        if (confirmChange) {
+          const res = await axios.patch(`http://localhost:7000/rentelCar/editItem/${type}/${id}`, { isActive: newStatus });
+          console.log(res.data);
+          const updatedVehicle = [...vehicle];
+          updatedVehicle[index].isActive = newStatus;
+          setVehicle(updatedVehicle);
+        }
+      } else {
+        console.log('Vehicle not found.');
+      }
+    } catch (error) {
+      console.error('Error changing status:', error);
+      alert(error.message);
+    }
+  };
+
 
 
   useEffect(() => {
-    getName();
-    getAllRecods()
-  }, []);
+    getName(); 
+    getAllRecods(selectedType);
+}, [selectedType]);
 
   return name === '' ? (
     <div className='unauth-text'><div><MdError className='err-icon' /></div>Unauthorized Access <div><Link className='gotoLogin' to='/adminLogin'>Login</Link></div> </div>
@@ -141,10 +170,12 @@ const AdminHome = () => {
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
-          <div> <Link className='off'>Dasbord</Link></div>
-          <div> <Link>Category</Link></div>
-          <div> <Link>Cars</Link></div>
-          <div> <Link>Bikes</Link></div>
+         <div className="offCanvasNavlinks">
+         <div> <Link className='offCanvasLinks'><FiChevronRight /> Dasbord</Link></div>
+          <div> <Link className='offCanvasLinks'><FiChevronRight /> Category</Link></div>
+          <div> <Link className='offCanvasLinks'><FiChevronRight /> Cars</Link></div>
+          <div> <Link className='offCanvasLinks'><FiChevronRight /> Bikes</Link></div>
+         </div>
         </div>
       </div>
 
@@ -164,8 +195,8 @@ const AdminHome = () => {
           <div className="addVehicleBtnSection">
             <select name="type" id="" value={selectedType}  onChange={handleSelectChange}>
               <option value="all">All</option>
-              <option value="bike">Bike</option>
-              <option value="car">Car</option>
+              <option value="bike">Bikes</option>
+              <option value="car">Cars</option>
             </select>
             {/* <Link className='addVehicleBtn' to={selectedType === 'car' ? '/addCar' : '/addBike'}>
           Add {selectedType === 'car' ? 'Car' : 'Bike'}
@@ -194,7 +225,8 @@ const AdminHome = () => {
                   <td className='status'>{vehicle.isActive ? (<span className='active'>Active</span>) : (<span className='blocked'>Blocked</span>)}</td>
                   <td>
                     <div className="icons">
-                      <div> <i className="fa fa-ban" aria-hidden="true"></i></div>
+                      {/* <div> <i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i></div> */}
+                      <div>{vehicle.isActive==true?(<i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>):(<i className="fa fa-check" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>)}</div>
                       <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
                       <div> <i className="fa fa-trash" aria-hidden="true" onClick={() => deleteItem(vehicle.type, vehicle._id)}></i></div>
                       <div>

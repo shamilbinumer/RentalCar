@@ -71,10 +71,21 @@
         }
     }
     .offcanvas{
-        width: 250px;
+        width: 210px;
     }
     .offcanvas-body{
-        text-align: center;
+        // text-align: center;
+        .offCanvasNavlinks{
+            // background-color: red !important;
+            width: 80%;
+            margin: auto;
+        }
+        .offCanvasLinks{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: 600;
+        }
     }
     .body{
         .welcomeTodashText{
@@ -156,19 +167,19 @@
                 }
                 .active{
                     background-color: green;
-                    padding: 4px 20px;
+                    padding: 6px 25px;
                     color: white;
                     font-weight: 600;
                 }
                 .icons{
                     display: flex;
-                    gap: 30px;
+                    gap: 20px;
                     justify-content: center;
                     flex-wrap: nowrap;
                 }
                 .blocked{
-                    background-color: red;
-                    padding: 4px 20px;
+                    background-color: rgb(166, 8, 8);
+                    padding: 6px 25px;
                     color: white;
                     font-weight: 600;
                 }
@@ -176,24 +187,37 @@
                     margin-right: 10px;
                     font-size: 20px;
                     border-radius: 3px;
-                    padding: 5px;
+                    padding: 8px;
                     cursor: pointer;
                 }
                 .fa-ban{
                     background-color: rgb(248, 48, 48);
                     color: white;
                 }
-                .fa-edit{
+                .fa-ban:hover{
+                    background-color: rgb(205, 4, 4);
+                }
+                .fa-edit, .fa-check{
                     background-color: rgb(6, 124, 6);
                     color: white; 
+                }
+                .fa-edit:hover, .fa-check:hover:hover{
+                    background-color: rgb(4, 99, 4); 
                 }
                 .fa-trash{
                     background-color: rgb(53, 113, 255);
                     color: white;
                 }
+                .fa-trash:hover{
+                    background-color: rgb(34, 75, 171);
+                    
+                }
                 .fa-eye{
                     background-color: rgb(249, 169, 64);
                     color: white; 
+                }
+                .fa-eye:hover{
+                    background-color: rgb(179, 120, 44); 
                 }
                 img{
                     width: 90px;
