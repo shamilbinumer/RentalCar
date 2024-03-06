@@ -119,10 +119,15 @@
         }
         .mainBody{
             select{
+                border: 2px solid rgba(171, 171, 171, 0.548);
+                border-radius: 3px;
                 width: 140px;
                 height: 31px;
                 margin-right: 10px;
                 padding: 0px 4px 0px 4px;
+            }
+            select:focus{
+               outline: none;
             }
             .addVehicleBtn{
                 text-decoration: none;
@@ -133,6 +138,9 @@
                 margin-right: 10px;
                 font-weight: 700;
                 border-radius: 3px;
+            }
+            .addVehicleBtn:hover{
+              background-color: rgb(3, 103, 3);
             }
             .tableMain{
                 table{
