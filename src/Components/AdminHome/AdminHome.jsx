@@ -48,7 +48,7 @@ const AdminHome = () => {
 
   const handleSelectChange = (e) => {
     setSelectedType(e.target.value);
-    getAllRecods(e.target.value); 
+    getAllRecods(e.target.value);
   };
 
   const getAllRecods = async (selectedType) => {
@@ -76,7 +76,7 @@ const AdminHome = () => {
   const getDetailsOfVehicle = async (type, id) => {
     try {
       const res = await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${type}/${id}`);
-      setModalDetails(res.data); 
+      setModalDetails(res.data);
     } catch (error) {
       console.error('Error fetching bike details:', error);
     }
@@ -131,13 +131,13 @@ const AdminHome = () => {
 
 
   useEffect(() => {
-    getName(); 
+    getName();
     getAllRecods(selectedType);
-}, [selectedType]);
+  }, [selectedType]);
 
-const filteredVehicle = vehicle.filter(item =>
-  item.model.toLowerCase().includes(searchQuery.toLowerCase())
-);
+  const filteredVehicle = vehicle.filter(item =>
+    item.model.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
 
   return name === '' ? (
@@ -149,11 +149,11 @@ const filteredVehicle = vehicle.filter(item =>
           <FaBars className="bar-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" /> <span>My Car</span>
         </div>
         <div>
-        <button className='logUotBtn' onClick={Logout}>LOGOUT</button>
+          <button className='logUotBtn' onClick={Logout}>LOGOUT</button>
           {/* <FaUserCircle className="user_icon" data-bs-toggle="modal" data-bs-target="#exampleModal" /> */}
-          
+
           <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-           
+
             {/* <div className="modal-dialog profile_modal">
               <div className="modal-content">
                 <div className="modal-header">
@@ -180,12 +180,12 @@ const filteredVehicle = vehicle.filter(item =>
           <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body">
-         <div className="offCanvasNavlinks">
-         <div> <Link className='offCanvasLinks'><FiChevronRight /> Dasbord</Link></div>
-          <div> <Link className='offCanvasLinks'><FiChevronRight /> Category</Link></div>
-          <div> <Link className='offCanvasLinks'><FiChevronRight /> Cars</Link></div>
-          <div> <Link className='offCanvasLinks'><FiChevronRight /> Bikes</Link></div>
-         </div>
+          <div className="offCanvasNavlinks">
+            <div> <Link className='offCanvasLinks'><FiChevronRight /> Dasbord</Link></div>
+            <div> <Link className='offCanvasLinks'><FiChevronRight /> Category</Link></div>
+            <div> <Link className='offCanvasLinks'><FiChevronRight /> Cars</Link></div>
+            <div> <Link className='offCanvasLinks'><FiChevronRight /> Bikes</Link></div>
+          </div>
         </div>
       </div>
 
@@ -203,24 +203,21 @@ const filteredVehicle = vehicle.filter(item =>
         </div>
         <div className="mainBody">
           <div className="addVehicleBtnSection">
-            <select name="type" id="" value={selectedType}  onChange={handleSelectChange}>
+            <select name="type" id="" value={selectedType} onChange={handleSelectChange}>
               <option value="all">All</option>
               <option value="bike">Bikes</option>
               <option value="car">Cars</option>
             </select>
-            {/* <Link className='addVehicleBtn' to={selectedType === 'car' ? '/addCar' : '/addBike'}>
-          Add {selectedType === 'car' ? 'Car' : 'Bike'}
-          </Link> */}
             <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
             <Link className='addVehicleBtn' to='/addBike'>Add bike</Link>
             <div className='searchBar'>
               <div className="serchInput">
-              <i className="fa fa-search" aria-hidden="true"></i><input type="search" placeholder='Search Item'   value={searchQuery}
-              onChange={handleSearchInputChange}  />
+                <i className="fa fa-search" aria-hidden="true"></i><input type="search" placeholder='Search Item' value={searchQuery}
+                  onChange={handleSearchInputChange} />
               </div>
             </div>
           </div>
-          
+
           <div className="tableMain">
             <table className="table table-striped" border='1'>
               <tr>
@@ -243,7 +240,7 @@ const filteredVehicle = vehicle.filter(item =>
                   <td>
                     <div className="icons">
                       {/* <div> <i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i></div> */}
-                      <div>{vehicle.isActive==true?(<i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>):(<i className="fa fa-check" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>)}</div>
+                      <div>{vehicle.isActive == true ? (<i className="fa fa-ban" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>) : (<i className="fa fa-check" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>)}</div>
                       <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
                       <div> <i className="fa fa-trash" aria-hidden="true" onClick={() => deleteItem(vehicle.type, vehicle._id)}></i></div>
                       <div>

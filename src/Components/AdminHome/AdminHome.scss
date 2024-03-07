@@ -1,22 +1,25 @@
-.unauth-text{
+.unauth-text {
     padding-top: 17%;
     text-align: center;
     font-size: 30px;
     // background-color: red;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-.unauth-text{
-    .err-icon{
+
+.unauth-text {
+    .err-icon {
         color: red;
         font-size: 45px;
     }
-    .gotoLogin{
+
+    .gotoLogin {
         text-decoration: none;
     }
 }
 
-.adminHomeMainDiv{
-    .nav-bar{
+.adminHomeMainDiv {
+    .nav-bar {
         position: sticky;
         top: 0;
         display: flex;
@@ -25,11 +28,11 @@
         width: 100%;
         padding: 14px;
         background-color: rgb(255, 255, 255);
-        box-shadow: -1px 8px 13px -12px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 13px -12px rgba(0, 0, 0, 0.75);
     }
-   
-    .nav-bar{
-        .logUotBtn{
+
+    .nav-bar {
+        .logUotBtn {
             border: none;
             background-color: green;
             margin-right: 10px;
@@ -37,129 +40,152 @@
             padding: 5px 20px;
             font-weight: 700;
         }
-        .bar-btn{
+
+        .bar-btn {
             font-size: 25px;
             cursor: pointer;
         }
-        span{
+
+        span {
             font-size: 20px;
             font-weight: 800;
             margin-left: 24px;
         }
-        .user_icon{
+
+        .user_icon {
             font-size: 30px;
             cursor: pointer;
         }
-        .profile_modal{
+
+        .profile_modal {
             margin-left: 82%;
             width: 250px;
         }
-        .logout-icon{
+
+        .logout-icon {
             margin-right: 10px;
             font-size: 20px;
         }
-        p{
+
+        p {
             cursor: pointer;
         }
-        .editPrfl{
+
+        .editPrfl {
             text-decoration: none;
             color: black;
         }
-        .editPrfl-icon{
+
+        .editPrfl-icon {
             font-size: 20px;
             margin-right: 10px;
         }
     }
-    .offcanvas{
+
+    .offcanvas {
         width: 210px;
     }
-    .offcanvas-body{
+
+    .offcanvas-body {
+
         // text-align: center;
-        .offCanvasNavlinks{
+        .offCanvasNavlinks {
             // background-color: red !important;
             width: 80%;
             margin: auto;
         }
-        .offCanvasLinks{
+
+        .offCanvasLinks {
             text-decoration: none;
             color: black;
             font-size: 20px;
             font-weight: 600;
         }
     }
-    .body{
-        .welcomeTodashText{
+
+    .body {
+        .welcomeTodashText {
             font-size: 20px;
             margin-left: 8%;
             margin-top: 2%;
         }
-        .basicDetails{
+
+        .basicDetails {
             padding-top: 1%;
             display: flex;
             gap: 20px;
             justify-content: center;
         }
-        .basicDetailsCard{
+
+        .basicDetailsCard {
             width: 25%;
             height: 100px;
             padding: 20px;
             // background-color: yellow;
             box-shadow: 1px 1px 20px 0px rgba(224, 224, 224, 0.75);
         }
-        .basicDetailsCard{
-            h5{
+
+        .basicDetailsCard {
+            h5 {
                 font-weight: 700;
                 margin-bottom: 0 !important;
             }
-            p{
+
+            p {
                 font-size: 30px;
                 font-family: "Roboto", sans-serif;
             }
         }
-        .mainBody{
+
+        .mainBody {
             width: 90%;
             height: auto;
             padding: 15px;
-            // background-color: yellow;
             margin: auto;
             margin-top: 40px !important;
             box-shadow: 1px 1px 20px 0px rgba(194, 194, 194, 0.75);
             text-align: right;
             margin-bottom: 30px !important;
-             border-radius: 6px;
+            border-radius: 6px;
         }
-        .mainBody{
-            .searchBar{
+
+        .mainBody {
+            .searchBar {
                 margin-top: 12px !important;
                 width: 98.5%;
                 margin: auto;
-              display: flex;
-              gap: 10px;
-              justify-content: right;
+                display: flex;
+                gap: 10px;
+                justify-content: right;
                 height: 60px;
                 // background-color: red;
+            }
+
+            .searchBar {
+                .serchInput {
+                    width: 31.2%;
+                    height: 40px;
+                    border-radius: 6px;
+                    padding: 5px;
+                    border: 2px solid rgb(173, 173, 173);
                 }
-                .searchBar{
-                    .serchInput{
-                        width: 31.2%;
-                        height: 40px;
-                        border-radius: 6px;
-                        padding: 5px;
-                        border: 2px solid rgb(173, 173, 173);
-                    }
-                    .fa{
-                        margin-right: 10px;
-                    }
-                    input{
-                        width: 90%;
-                        height: 26px;
-                        border: none;
-                    }
-                    input:focus{
-                        outline: none;
-                    }
+
+                .fa {
+                    margin-right: 10px;
                 }
-            select{
+
+                input {
+                    width: 90%;
+                    height: 26px;
+                    border: none;
+                }
+
+                input:focus {
+                    outline: none;
+                }
+            }
+
+            select {
                 border: 2px solid rgba(171, 171, 171, 0.548);
                 border-radius: 3px;
                 width: 140px;
@@ -167,10 +193,12 @@
                 margin-right: 10px;
                 padding: 0px 4px 0px 4px;
             }
-            select:focus{
-               outline: none;
+
+            select:focus {
+                outline: none;
             }
-            .addVehicleBtn{
+
+            .addVehicleBtn {
                 text-decoration: none;
                 background-color: rgb(6, 124, 6);
                 border: 1px solid rgb(6, 124, 6);
@@ -180,111 +208,137 @@
                 font-weight: 700;
                 border-radius: 3px;
             }
-            .addVehicleBtn:hover{
-              background-color: rgb(3, 103, 3);
+
+            .addVehicleBtn:hover {
+                background-color: rgb(3, 103, 3);
             }
-            .tableMain{
-                table{
+
+            .tableMain {
+                table {
                     text-align: center;
                     margin-top: 15px;
                 }
-                tr{
+
+                tr {
                     border-bottom: 1px solid rgb(208, 208, 208);
                 }
-               
-                th{
+
+                th {
                     height: 50px;
                 }
-                .active{
+
+                .active {
                     background-color: green;
                     padding: 6px 25px;
                     color: white;
                     font-weight: 600;
                 }
-                .icons{
+
+                .icons {
                     display: flex;
                     gap: 20px;
                     justify-content: center;
                     flex-wrap: nowrap;
                 }
-                .blocked{
+
+                .blocked {
                     background-color: rgb(166, 8, 8);
                     padding: 6px 25px;
                     color: white;
                     font-weight: 600;
                 }
-                .fa{
+
+                .fa {
                     margin-right: 10px;
                     font-size: 20px;
                     border-radius: 3px;
                     padding: 8px;
                     cursor: pointer;
                 }
-                .fa-ban{
+
+                .fa-ban {
                     background-color: rgb(248, 48, 48);
                     color: white;
                 }
-                .fa-ban:hover{
+
+                .fa-ban:hover {
                     background-color: rgb(205, 4, 4);
                 }
-                .fa-edit, .fa-check{
+
+                .fa-edit,
+                .fa-check {
                     background-color: rgb(6, 124, 6);
-                    color: white; 
+                    color: white;
                 }
-                .fa-edit:hover, .fa-check:hover:hover{
-                    background-color: rgb(4, 99, 4); 
+
+                .fa-edit:hover,
+                .fa-check:hover:hover {
+                    background-color: rgb(4, 99, 4);
                 }
-                .fa-trash{
+
+                .fa-trash {
                     background-color: rgb(53, 113, 255);
                     color: white;
                 }
-                .fa-trash:hover{
+
+                .fa-trash:hover {
                     background-color: rgb(34, 75, 171);
-                    
+
                 }
-                .fa-eye{
+
+                .fa-eye {
                     background-color: rgb(249, 169, 64);
-                    color: white; 
+                    color: white;
                 }
-                .fa-eye:hover{
-                    background-color: rgb(179, 120, 44); 
+
+                .fa-eye:hover {
+                    background-color: rgb(179, 120, 44);
                 }
-                img{
+
+                img {
                     width: 90px;
-                }.modal-header{
-                    .modal-title{
+                }
+
+                .modal-header {
+                    .modal-title {
                         font-weight: 800;
                         letter-spacing: 1px;
                     }
                 }
-                .details-modal{
-                    
-                    .img{
+
+                .details-modal {
+
+                    .img {
                         margin-bottom: 22px;
                     }
-                    .img{
-                        img{
+
+                    .img {
+                        img {
                             width: 200px;
                             // filter: drop-shadow(5px 27px 30px rgb(156, 156, 156));
                         }
                     }
-                    .caardsMain{
-                        .detailsCard{
+
+                    .caardsMain {
+                        .detailsCard {
                             margin-bottom: 10px;
                         }
-                        .detailsCard{
-                            .cardHeadig{
+
+                        .detailsCard {
+                            .cardHeadig {
                                 margin-bottom: 0 !important;
                                 font-weight: 800;
                             }
-                            div{
-                              border: 2px solid rgba(0, 0, 0, 0.174);
-                              border-radius: 8px;
+
+                            div {
+                                border: 2px solid rgba(0, 0, 0, 0.174);
+                                border-radius: 8px;
                                 padding: 10px;
                                 margin: auto;
-                                
+
                             }
-                            .modalIcons{
+
+                            .modalIcons {
                                 font-size: 30px;
                             }
                         }
@@ -295,48 +349,83 @@
     }
 
 
-    @media (min-width:300px) and (max-width:576px){
-        .basicDetails{
+    @media (min-width:300px) and (max-width:576px) {
+
+        .basicDetails {
             display: inline !important;
         }
-        .profile_modal{
+
+        .profile_modal {
             margin-left: 39% !important;
             margin-top: 4%;
             width: 180px !important;
         }
-        .basicDetailsCard{
+
+        .basicDetailsCard {
             width: 90% !important;
             margin: auto;
             margin-top: 10px !important;
             height: 100px;
             padding: 20px;
             // background-color: yellow;
-            box-shadow: -1px 1px 15px -5px rgba(0,0,0,0.75);
+            box-shadow: -1px 1px 15px -5px rgba(0, 0, 0, 0.75);
         }
-        .mainBody{
+
+        .mainBody {
             overflow: scroll;
         }
-        .addVehicleBtn{
-        font-size: 12px;
+
+        .addVehicleBtn {
+            font-size: 12px;
         }
-        select{
+
+        select {
             width: 90px !important;
             height: 24px !important;
         }
-        .tableMain{
-            .fa{
+
+        .searchBar {
+            .serchInput {
+                width: 100% !important;
+                // background-color: red;
+                height: 35px !important;
+                border-radius: 6px;
+                padding: 5px;
+                border: 2px solid rgb(173, 173, 173);
+            }
+
+            .fa {
+                display: none;
+            }
+
+            input {
+                width: 90%;
+                height: 26px;
+                border: none;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        }
+
+        .tableMain {
+            .fa {
                 font-size: 15px !important;
             }
-            th{
+
+            th {
                 font-size: 13px !important;
-               width: 30% !important;
-            
+                width: 30% !important;
+
             }
-            td{
+
+            td {
                 font-size: 12px !important;
                 width: 1000px !important;
             }
-            img{
+
+            img {
                 width: 75px !important;
             }
         }
