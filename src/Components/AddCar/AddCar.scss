@@ -82,10 +82,170 @@
                 border-radius: 6px;
             }
         }
-        .file-input{
-            // input{
-            //     border: none;
-            // }
+      
+    }
+
+    ////////////////media query/////////////////
+    @media(min-width:300px) and (max-width:575px){
+        .main_card{
+            // background-color: rgb(105, 38, 38);
+            width: 90%;
+            margin: auto;
+            padding: 0px;
+        }
+        .inputs{
+            // background-color: red;
+            width: 100%;
+            margin: auto;
+        }
+        .inputs{
+            input,select{
+                margin-right: 0;
+                width: 44.5%;
+                margin-bottom: 10px;
+                margin-left: 10px;
+            }
+            select{
+              font-size: 12px;
+            }
+            input::placeholder{
+                font-size: 12px;
+            }
+            .submit_btn{
+                padding-top: 20px;
+            }
+            .submit_btn{
+                button{
+                    width: 50.2%;
+                    height: 35px;
+                    border-radius: 2px;
+                    margin-left: 24%;
+                }
+            }
+          
+        }
+    }
+
+
+    @media(min-width:576px) and (max-width:767px){
+        .main_card{
+            // background-color: rgb(105, 38, 38);
+            width: 90%;
+            margin: auto;
+            padding: 0px;
+        }
+        .inputs{
+            // background-color: red;
+            width: 100%;
+            margin: auto;
+        }
+        .inputs{
+            input,select{
+                margin-right: 0;
+                width: 47.5%;
+                margin-bottom: 10px;
+                margin-left: 10px;
+            }
+            select{
+              font-size: 16px;
+            }
+            input::placeholder{
+                font-size: 16px;
+            }
+            .submit_btn{
+                padding-top: 20px;
+            }
+            .submit_btn{
+                button{
+                    width: 50.2%;
+                    height: 35px;
+                    border-radius: 2px;
+                    margin-left: 24%;
+                }
+            }
+          
+        }
+    }
+
+
+    @media(min-width:768px) and (max-width:991px){
+        .main_card{
+            // background-color: rgb(105, 38, 38);
+            width: 90%;
+            margin: auto;
+            padding: 0px;
+        }
+        .inputs{
+            // background-color: red;
+            width: 100%;
+            margin: auto;
+        }
+        .inputs{
+            input,select{
+                margin-right: 0;
+                width: 47.9%;
+                margin-bottom: 10px;
+                margin-left: 10px;
+            }
+            select{
+              font-size: 16px;
+            }
+            input::placeholder{
+                font-size: 16px;
+            }
+            .submit_btn{
+                padding-top: 20px;
+            }
+            .submit_btn{
+                button{
+                    width: 50.2%;
+                    height: 35px;
+                    border-radius: 2px;
+                    margin-left: 24%;
+                }
+            }
+          
+        }
+    }
+
+
+    @media(min-width:992px) and (max-width:1200px){
+        .main_card{
+            // background-color: rgb(105, 38, 38);
+            width: 90%;
+            margin: auto;
+            padding: 0px;
+        }
+        .inputs{
+            // background-color: red;
+            width: 100%;
+            margin: auto;
+        }
+        .inputs{
+            input,select{
+                margin-right: 0;
+                width: 47.9%;
+                margin-bottom: 10px;
+                margin-left: 10px;
+            }
+            select{
+              font-size: 16px;
+            }
+            input::placeholder{
+                font-size: 16px;
+            }
+            .submit_btn{
+                padding-top: 20px;
+            }
+            .submit_btn{
+                button{
+                    width: 50.2%;
+                    height: 35px;
+                    border-radius: 2px;
+                    margin-left: 24%;
+                }
+            }
+          
         }
     }
 }
