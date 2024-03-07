@@ -23,6 +23,7 @@ const AdminHome = () => {
   // const [car, setCar] = useState([])
   const [selectedType, setSelectedType] = useState("all");
   const [modalDetails, setModalDetails] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
   const value = JSON.parse(localStorage.getItem('admin_token'));
 
   const getName = async () => {
@@ -123,12 +124,21 @@ const AdminHome = () => {
     }
   };
 
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
 
 
   useEffect(() => {
     getName(); 
     getAllRecods(selectedType);
 }, [selectedType]);
+
+const filteredVehicle = vehicle.filter(item =>
+  item.model.toLowerCase().includes(searchQuery.toLowerCase())
+);
+
 
   return name === '' ? (
     <div className='unauth-text'><div><MdError className='err-icon' /></div>Unauthorized Access <div><Link className='gotoLogin' to='/adminLogin'>Login</Link></div> </div>
@@ -203,7 +213,14 @@ const AdminHome = () => {
           </Link> */}
             <Link className='addVehicleBtn' to='/addCar'>Add Car</Link>
             <Link className='addVehicleBtn' to='/addBike'>Add bike</Link>
+            <div className='searchBar'>
+              <div className="serchInput">
+              <i className="fa fa-search" aria-hidden="true"></i><input type="search" placeholder='Search Item'   value={searchQuery}
+              onChange={handleSearchInputChange}  />
+              </div>
+            </div>
           </div>
+          
           <div className="tableMain">
             <table className="table table-striped" border='1'>
               <tr>
@@ -216,7 +233,7 @@ const AdminHome = () => {
               </tr>
 
               {/* ///////////////map///////////// */}
-              {vehicle.map((vehicle, index) => (
+              {filteredVehicle.map((vehicle, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{vehicle.model}</td>

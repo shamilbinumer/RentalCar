@@ -129,6 +129,36 @@
              border-radius: 6px;
         }
         .mainBody{
+            .searchBar{
+                margin-top: 12px !important;
+                width: 98.5%;
+                margin: auto;
+              display: flex;
+              gap: 10px;
+              justify-content: right;
+                height: 60px;
+                // background-color: red;
+                }
+                .searchBar{
+                    .serchInput{
+                        width: 31.2%;
+                        height: 40px;
+                        border-radius: 6px;
+                        padding: 5px;
+                        border: 2px solid rgb(173, 173, 173);
+                    }
+                    .fa{
+                        margin-right: 10px;
+                    }
+                    input{
+                        width: 90%;
+                        height: 26px;
+                        border: none;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                }
             select{
                 border: 2px solid rgba(171, 171, 171, 0.548);
                 border-radius: 3px;
