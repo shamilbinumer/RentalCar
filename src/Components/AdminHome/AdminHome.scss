@@ -428,7 +428,7 @@
 
             td {
                 font-size: 12px !important;
-                width: 1000px !important;
+                // width: 1000px !important;
             }
 
             img {
@@ -437,4 +437,91 @@
         }
     }
 
+
+    @media (min-width:577px) and (max-width:768px) {
+
+        .basicDetails {
+            display: flex !important;
+            // background-color: red;
+            width: 90%;
+            margin: auto;
+        }
+
+        .profile_modal {
+            margin-left: 39% !important;
+            margin-top: 4%;
+            width: 180px !important;
+        }
+
+        .basicDetailsCard {
+            width: 90% !important;
+            margin: auto;
+            margin-top: 10px !important;
+            height: 100px;
+            padding: 20px;
+            // background-color: yellow;
+            box-shadow: -1px 1px 15px -5px rgba(0, 0, 0, 0.75);
+        }
+
+        .mainBody {
+            overflow: scroll;
+        }
+
+        .addVehicleBtn {
+            font-size: 12px;
+        }
+
+        select {
+            width: 90px !important;
+            height: 24px !important;
+        }
+
+        .searchBar {
+            .serchInput {
+                width: 50% !important;
+                // background-color: red;
+                height: 35px !important;
+                border-radius: 6px;
+                padding: 3px !important;
+                border: 2px solid rgb(173, 173, 173);
+            }
+           
+
+            .fa {
+                display: none;
+            }
+
+            input {
+                width: 90%;
+                height: 26px;
+                border: none;
+            }
+
+            input:focus {
+                outline: none;
+            }
+        }
+
+        .tableMain {
+           
+            .fa {
+                font-size: 15px !important;
+            }
+
+            th {
+                font-size: 13px !important;
+                width: 30% !important;
+
+            }
+
+            td {
+                font-size: 12px !important;
+                width: 1000px !important;
+            }
+
+            img {
+                width: 75px !important;
+            }
+        }
+    }
 }
