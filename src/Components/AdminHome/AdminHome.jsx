@@ -230,123 +230,130 @@ const AdminHome = () => {
               </tr>
 
               {/* ///////////////map///////////// */}
-              {filteredVehicle.map((vehicle, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{vehicle.model}</td>
-                  <td>{vehicle.type}</td>
-                  <td><img src={vehicle.photo} alt="" /></td>
-                  <td className='status'>{vehicle.isActive ? (<span className='active'>Active</span>) : (<span className='blocked'>Blocked</span>)}</td>
-                  <td>
-                    <div className="icons">
-                      {/* <div> <i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i></div> */}
-                      <div>{vehicle.isActive == true ? (<i className="fa fa-ban" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>) : (<i className="fa fa-check" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>)}</div>
-                      <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
-                      <div> <i className="fa fa-trash" aria-hidden="true" onClick={() => deleteItem(vehicle.type, vehicle._id)}></i></div>
-                      <div>
-                        <i className="fa fa-eye" aria-hidden="true" onClick={() => getDetailsOfVehicle(vehicle.type, vehicle._id)} data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
-
-
-                        {/* <!-- Modal --> */}
-                        <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                          <div className="modal-dialog">
-                            <div className="modal-content">
-                              <div className="modal-header">
-                                <h1 className="modal-title fs-5" id="staticBackdropLabel">Vehicle Details</h1>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              {filteredVehicle.length===0?(
+                 <tr>
+                 <td colSpan="6" className='noItemFound'>No items found</td>
+               </tr>
+              ):(
+                filteredVehicle.map((vehicle, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{vehicle.model}</td>
+                    <td>{vehicle.type}</td>
+                    <td><img src={vehicle.photo} alt="" /></td>
+                    <td className='status'>{vehicle.isActive ? (<span className='active'>Active</span>) : (<span className='blocked'>Blocked</span>)}</td>
+                    <td>
+                      <div className="icons">
+                        {/* <div> <i className="fa fa-ban" aria-hidden="true"  onClick={() => changeStatus(vehicle.type, vehicle._id)}></i></div> */}
+                        <div>{vehicle.isActive == true ? (<i className="fa fa-ban" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>) : (<i className="fa fa-check" aria-hidden="true" onClick={() => changeStatus(vehicle.type, vehicle._id)}></i>)}</div>
+                        <div><Link to={`/edit${vehicle.type === 'car' ? 'Car' : 'Bike'}/${vehicle.type}/${vehicle._id}`}> <i className="fa fa-edit" aria-hidden="true"></i></Link></div>
+                        <div> <i className="fa fa-trash" aria-hidden="true" onClick={() => deleteItem(vehicle.type, vehicle._id)}></i></div>
+                        <div>
+                          <i className="fa fa-eye" aria-hidden="true" onClick={() => getDetailsOfVehicle(vehicle.type, vehicle._id)} data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+  
+  
+                          {/* <!-- Modal --> */}
+                          <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h1 className="modal-title fs-5" id="staticBackdropLabel">Vehicle Details</h1>
+                                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body details-modal">
+                                  {modalDetails && (
+                                    <div>
+                                      <div className="img"><img src={modalDetails.photo} alt="" /></div>
+                                      <div className="row caardsMain">
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <TbBrandAppgallery className='modalIcons' />
+                                            <p className="cardHeadig">Brand</p>
+                                            <p>{modalDetails.brand}</p>
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <FaCarRear className='modalIcons' />
+                                            <p className="cardHeadig">Model Name</p>
+                                            <p>{modalDetails.model}</p>
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <CiCalendarDate className='modalIcons' />
+                                            <p className="cardHeadig">Year of Reg</p>
+                                            <p>{modalDetails.yearOfRegistration}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="row caardsMain">
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <GiGearStickPattern className='modalIcons' />
+                                            <p className="cardHeadig">Transmision</p>
+                                            {/* <p>{modalDetails.brand}</p> */}
+                                            <>
+                                              {modalDetails.type === 'bike' ? <p>Manual</p> : <p>{modalDetails.transmision}</p>}
+                                            </>
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <BiSolidColorFill className='modalIcons' />
+                                            <p className="cardHeadig">Colour</p>
+                                            <p>{modalDetails.colour}</p>
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <BsFillFuelPumpFill className='modalIcons' />
+                                            <p className="cardHeadig">Fuel Type</p>
+                                            {modalDetails.type === 'bike' ? <p>Petrol</p> : <p>{modalDetails.fuel_type}</p>}
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="row caardsMain">
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <GiCarSeat className='modalIcons' />
+                                            <p className="cardHeadig">Seat Capacity</p>
+                                            {modalDetails.type === 'bike' ? <p>2 Persons</p> : <p>{modalDetails.seatCapacity} Persons</p>}
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <TbBrandCashapp className='modalIcons' />
+                                            <p className="cardHeadig">Rent / Day</p>
+                                            <p>₹ {modalDetails.rentPerDay}</p>
+                                            <p></p>
+                                          </div>
+                                        </div>
+                                        <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
+                                          <div>
+                                            <TbBrandCashapp className='modalIcons' />
+                                            <p className="cardHeadig">Rent / Month</p>
+                                            <p> ₹ {modalDetails.rentPerMonth}</p>
+                                            <p></p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                                {/* <div className="modal-footer">
+                                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div> */}
                               </div>
-                              <div className="modal-body details-modal">
-                                {modalDetails && (
-                                  <div>
-                                    <div className="img"><img src={modalDetails.photo} alt="" /></div>
-                                    <div className="row caardsMain">
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <TbBrandAppgallery className='modalIcons' />
-                                          <p className="cardHeadig">Brand</p>
-                                          <p>{modalDetails.brand}</p>
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <FaCarRear className='modalIcons' />
-                                          <p className="cardHeadig">Model Name</p>
-                                          <p>{modalDetails.model}</p>
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <CiCalendarDate className='modalIcons' />
-                                          <p className="cardHeadig">Year of Reg</p>
-                                          <p>{modalDetails.yearOfRegistration}</p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row caardsMain">
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <GiGearStickPattern className='modalIcons' />
-                                          <p className="cardHeadig">Transmision</p>
-                                          {/* <p>{modalDetails.brand}</p> */}
-                                          <>
-                                            {modalDetails.type === 'bike' ? <p>Manual</p> : <p>{modalDetails.transmision}</p>}
-                                          </>
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <BiSolidColorFill className='modalIcons' />
-                                          <p className="cardHeadig">Colour</p>
-                                          <p>{modalDetails.colour}</p>
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <BsFillFuelPumpFill className='modalIcons' />
-                                          <p className="cardHeadig">Fuel Type</p>
-                                          {modalDetails.type === 'bike' ? <p>Petrol</p> : <p>{modalDetails.fuel_type}</p>}
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="row caardsMain">
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <GiCarSeat className='modalIcons' />
-                                          <p className="cardHeadig">Seat Capacity</p>
-                                          {modalDetails.type === 'bike' ? <p>2 Persons</p> : <p>{modalDetails.seatCapacity} Persons</p>}
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <TbBrandCashapp className='modalIcons' />
-                                          <p className="cardHeadig">Rent / Day</p>
-                                          <p>₹ {modalDetails.rentPerDay}</p>
-                                          <p></p>
-                                        </div>
-                                      </div>
-                                      <div className="col-lg-4 col-md-6 col-sm-6 detailsCard">
-                                        <div>
-                                          <TbBrandCashapp className='modalIcons' />
-                                          <p className="cardHeadig">Rent / Month</p>
-                                          <p> ₹ {modalDetails.rentPerMonth}</p>
-                                          <p></p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                              {/* <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              </div> */}
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                ))
+              )}
+              
               {/* ///////////////map///////////// */}
 
 

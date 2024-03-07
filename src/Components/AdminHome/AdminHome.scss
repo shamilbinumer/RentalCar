@@ -214,6 +214,10 @@
             }
 
             .tableMain {
+                .noItemFound{
+                    padding: 30px !important;
+                    // background-color: red;
+                }
                 table {
                     text-align: center;
                     margin-top: 15px;
@@ -390,9 +394,10 @@
                 // background-color: red;
                 height: 35px !important;
                 border-radius: 6px;
-                padding: 5px;
+                padding: 3px !important;
                 border: 2px solid rgb(173, 173, 173);
             }
+           
 
             .fa {
                 display: none;
@@ -410,6 +415,7 @@
         }
 
         .tableMain {
+           
             .fa {
                 font-size: 15px !important;
             }
