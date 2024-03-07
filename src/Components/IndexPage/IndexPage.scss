@@ -6,10 +6,48 @@
         display: flex;
     }
     .hero{
-        .hero-left,.hero-right{
-            width: 50%;
-            height: 300px;
-            background-color: red;
+        .hero-left{
+            width: 45%;
+            // height: 300px;
+            // background-color: red;
+        }
+        .hero-left{
+            width: 55%;
+            padding-top: 6%;
+            padding-left: 6%;
+            // background-color: red;
+        }
+        .hero-left{
+            h1{
+                color: #eaa911;
+                font-size: 70px;
+                // background-color: red;
+            }
+            p{
+                color: #eaa911;
+                width: 100% !important;
+            }
+            span{
+                color: white;
+            }
+            .RentCarBtnDiv{
+                padding-top: 10px;
+            }
+            .RenrCarBtn{
+                text-decoration: none;
+                background-color: #eaa911;
+                border: 2px solid #eaa911;
+                color: #272727;
+                padding: 6px 20px;
+                font-weight: 600;
+                font-size: 22px;
+                transition: .2s;
+            }
+            .RenrCarBtn:hover{
+                background-color: transparent;
+                color: #eaa911;
+                border-radius: 20px;
+            }
         }
     }
 }
