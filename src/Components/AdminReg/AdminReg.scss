@@ -81,7 +81,7 @@
         .regCard{
             height: 320px;
             width: 80%;
-            margin-top: 120px;
+            margin-top: 70px;
         }
         .regCard{
             h2{
@@ -123,13 +123,14 @@
     }
     @media(min-width:576px) and (max-width:768px){
         .regCard{
-            height: 330px;
-            width: 50%;
-            margin-top: 120px;
+            // background-color: red;
+            height: 360px !important;
+            width: 60%;
+            margin-top: 50px;
         }
         .regCard{
             h2{
-                font-size: 20px;
+                font-size:25px;
                 margin-top: 10px;
             }
             .inputs{
@@ -139,11 +140,11 @@
             input{
                 width: 100%;
                 margin-bottom: 10px;
-                height: 30px;
+                height: 35px;
                 border-radius: 2px;
             }
             input::placeholder{
-                font-size: 14px;
+                font-size: 16px;
             }
             .gotoLogin{
                 text-align: center;
@@ -159,9 +160,55 @@
                 width: 100%;
             }
             button{
-                font-size: 14px;
-                width: 90px;
-                height: 30px;
+                font-size: 16px;
+                width: 100px;
+                height: 35px;
+            }
+        }
+    }
+
+    @media(min-width:769px) and (max-width:991px){
+        .regCard{
+            // background-color: red;
+            height: 360px !important;
+            width: 50%;
+            margin-top: 50px;
+        }
+        .regCard{
+            h2{
+                font-size:25px;
+                margin-top: 10px;
+            }
+            .inputs{
+                width: 90%;
+                padding-top: 10px;
+            }
+            input{
+                width: 100%;
+                margin-bottom: 10px;
+                height: 35px;
+                border-radius: 2px;
+            }
+            input::placeholder{
+                font-size: 16px;
+            }
+            .gotoLogin{
+                text-align: center;
+                padding-top: 10px;
+            }
+            .goLogin{
+                // color: #503924;
+                color: white;
+            }
+            .btn{
+                text-align: center;
+                // background-color: red;
+                width: 100%;
+            }
+            button{
+                font-size: 16px;
+                width: 100px;
+                height: 35px;
             }
         }
     }
