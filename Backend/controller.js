@@ -232,12 +232,9 @@ export async function custLogin(req, res) {
     if (usr === null) return res.status(404).send("Email or password does not exist");
     const success = await bcrypt.compare(password, usr.password);
     console.log(success);
-    // console.log(usr);
     const { fullName,_id } = usr;
-    // console.log(fullName,_id);
     if (success !== true) return res.status(404).send("Email or password does not exist");
     const token = await sign({ fullName,_id }, process.env.JWT_KEY);
-    // console.log(username);
     console.log(token);
     res.status(200).send({ msg: "Successfully logged in", token });
     // res.end();

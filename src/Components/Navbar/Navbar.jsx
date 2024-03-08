@@ -40,7 +40,7 @@ const Navbar = () => {
         <Link className='navItems'>About</Link>
         <Link className='navItems'>Cars</Link>
         <Link className='navItems'>Bikes</Link>
-        <Link className='LoginBtn'>Sign In</Link>
+        <Link className='LoginBtn' to='/custLogin'>Sign In</Link>
       </div>
      </div>
       </div>
