@@ -13,7 +13,10 @@ router.route("/getAllVehicle/:type").get(controller.getAllRecords);
 router.route("/getFullBikeDetails/:type/:id").get(controller.getVehicleDetails);
 router.route("/deleteItem/:type/:id").delete(controller.deleteVehicle);
 router.route("/editItem/:type/:id").patch(controller.editDetails);
+//////////////////customerModule/////////////////////////
 router.route("/addcust").post(controller.AddCustomer);
+router.route("/custlogin").post(controller.custLogin);
+router.route("/custAuth").get(Auth,controller.CustAuth);
 
 
 

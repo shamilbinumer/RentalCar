@@ -221,3 +221,42 @@ export async function AddCustomer(req,res){
   
 }
 
+////////////////////cust-login///////////////
+
+export async function custLogin(req, res) {
+  try {
+    console.log(req.body);
+    const { email, password } = req.body;
+    const usr = await cust_schema.findOne({ email });
+    console.log(usr);
+    if (usr === null) return res.status(404).send("Email or password does not exist");
+    const success = await bcrypt.compare(password, usr.password);
+    console.log(success);
+    // console.log(usr);
+    const { fullName,_id } = usr;
+    // console.log(fullName,_id);
+    if (success !== true) return res.status(404).send("Email or password does not exist");
+    const token = await sign({ fullName,_id }, process.env.JWT_KEY);
+    // console.log(username);
+    console.log(token);
+    res.status(200).send({ msg: "Successfully logged in", token });
+    // res.end();
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+///////////////cust Auth/////////////////
+
+export async function CustAuth(req,res)
+{
+  try {
+    
+     const{fullName,_id}=req.user;
+    res.status(200).send({msg:`${fullName}`,id:`${_id}`})
+   } 
+   catch (error) {
+    res.status(404).send(error)
+  }
+}
