@@ -257,3 +257,13 @@ export async function CustAuth(req,res)
     res.status(404).send(error)
   }
 }
+
+//////////////get One Cust//////////////
+
+export async function getOneCust(req,res){
+  const{id}=req.params;
+  console.log(id);
+  let task=await cust_schema.findOne({_id:id})
+  console.log(task);
+  res.status(200).send(task)
+}

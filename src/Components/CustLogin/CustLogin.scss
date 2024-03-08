@@ -1,0 +1,161 @@
+.CustLoginMain{
+    .MainCard{
+        // background-color: lightblue;
+        width: 80%;
+        height: 600px;
+        margin: auto;
+        margin-top: 3%;
+        display: flex;
+        box-shadow: 0px 0px 15px 1px rgba(149, 149, 149, 0.75);
+    }
+    .MainCard{
+        .MainCardLeft{
+            overflow: hidden;
+            width: 60%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.496),rgba(0, 0, 0, 0.556)), url("/bgCar2.jpg");
+            background-size: cover;
+            height: 600px;
+        }
+        .MainCardLeft{
+            .contents{
+                // background-color: red;
+                padding-top: 13%;
+                width: 80%;
+                margin: auto;
+            }
+            h2{
+                color: #eaa911;
+                text-align: center;
+                letter-spacing: 2px;
+                font-size: 46px;
+                font-weight: 700;
+            }
+            .ul{
+                border-bottom: 5px solid #eaa911;
+                width: 500px;
+                margin: auto;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+            p{
+                color: #eaa911;
+                text-align: center;
+            }
+            .home{
+                text-align: center;
+                padding-top: 40px;
+            }
+            .homeBtn{
+                text-decoration: none;
+                background-color: #eaa911;
+                color: #272727;
+                padding: 6px 20px;
+                font-weight: 600;
+                border-radius: 3px;
+            }
+        }
+        .MainCardRight{
+            width: 40%;
+            background-color: #272727;
+        }
+        .MainCardRight{
+            .formData{
+                padding: 60px;
+                padding-top: 180px;
+                // background-color: red;
+            }
+            .formData{
+                h3{
+                    color: #eaa911;
+                    text-align: center;
+                    margin-bottom: 40px;
+                    // background-color: green;
+                }
+                .input{
+                    // background-color: red;
+                    width: 90%;
+                    margin: auto;
+                }
+                .input{
+                    input{
+                        color: #eaa911;
+                        width: 100%;
+                        border: none;
+                        background-color: #373737;
+                        margin-bottom: 10px;
+                        height: 40px;
+                        padding-left: 10px;
+                        border-left: 4px solid #eaa911;
+                    }
+                    .file{
+                        padding-top: 4px;
+                        color: white;
+                    }
+                    .sgnBtn{
+                        text-align: center;
+                        padding-top: 20px;
+                    }
+                    .sgnBtn{
+                        button{
+                            background-color: #eaa911;
+                            border: 1px solid #eaa911;
+                            padding: 5px 20px;
+                            font-weight: 700;
+                            letter-spacing: 1px;
+                            border-radius: 15px;
+                            margin-bottom: 12px;
+                        }
+                        .goToLogin{
+                            text-decoration: none;
+                            color: #eaa911;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media(min-width:300px) and (max-width:576px){
+        .MainCard{
+            width: 100% !important;
+            margin-top: 0 !important;
+            height: 100vh;
+        }
+        .MainCardLeft{
+            display: none;
+        }
+        .MainCardRight{
+            width: 100% !important;
+        }
+        .formData{
+            padding-top: 150px !important;
+            // background-color: red;
+        }
+        .input{
+            // background-color: red;
+            width: 100% !important;
+        }
+    }
+
+    @media(min-width:577px) and (max-width:768px){
+        .MainCard{
+            width: 100% !important;
+            margin-top: 0 !important;
+            height: 100vh;
+        }
+        .MainCardLeft{
+            display: none;
+        }
+        .MainCardRight{
+            width: 100% !important;
+        }
+        .formData{
+            padding-top: 150px !important;
+            // background-color: red;
+        }
+        .input{
+            // background-color: red;
+            width: 100% !important;
+        }
+    }
+}

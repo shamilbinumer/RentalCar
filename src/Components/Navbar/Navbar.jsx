@@ -1,10 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.scss'
 import { Link } from 'react-router-dom'
 import CustLogin from '../CustLogin/CustLogin';
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { FaCircleUser } from "react-icons/fa6";
+import axios from 'axios';
 
 const Navbar = () => {
+
+  const [name,setName]=useState('')
+  const [id,setId]=useState('')
+  const [custPhoto,setCustPhoto]=useState('')
+  const value = JSON.parse(localStorage.getItem('cust_token'));
+  // http://localhost:7000/rentelCar/custAuth
+
+ 
+
+  const getName = async () => {
+    try {
+      const res = await axios.get('http://localhost:7000/rentelCar/custAuth', {
+        headers: { Authorization: `Bearer ${value}` },
+      });
+      setName(res.data.msg);
+      setId(res.data.id)
+      console.log(name);
+      console.log(id);
+    } catch (error) {
+      console.error('Error fetching user name:', error);
+    }
+  };
+
+  const getCust=async()=>{
+    const res=await axios.get(`http://localhost:7000/rentelCar/getOneCust/${id}`)
+    // console.log(res.data.image);
+    setCustPhoto(res.data.image)
+    console.log(custPhoto);
+  }
+
+  useEffect(()=>{
+    getName()
+    getCust()
+  },[])
 
   return (
     <div className='NavbarMain'>
@@ -40,7 +77,8 @@ const Navbar = () => {
         <Link className='navItems'>About</Link>
         <Link className='navItems'>Cars</Link>
         <Link className='navItems'>Bikes</Link>
-        <Link className='LoginBtn' to='/custLogin'>Sign In</Link>
+        {/* <Link className='LoginBtn' to='/custLogin'>Sign In</Link> */}
+        {name===''?(<Link className='LoginBtn' to='/custLogin'>Sign In</Link>):(<span className='name'>{name}<div className='custPhoto'><img src={custPhoto} alt="" /></div><BsThreeDotsVertical className='userIcon' /></span>)}
       </div>
      </div>
       </div>

@@ -18,6 +18,23 @@
             width: 200px;
         }
     }
+    .name{
+        color: #eaa911;
+    }
+    .custPhoto{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .custPhoto{
+        img{
+            width: 100%;
+        }
+    }
+    .userIcon{
+        font-size: 27px;
+    }
     .navBar{
         width: 100%;
         background-color: #272727;
@@ -54,17 +71,20 @@
             text-decoration: none;
             font-weight: 600;
             background-color: #eaa911;
+            border: 2px solid #eaa911;
             color: rgb(0, 0, 0);
             padding: 7px 20px;
             // margin: 10px;
             letter-spacing: 1px;
             border-radius: 2px;
             font-size: 16px;
-            border: none;
+            // border: none;
             transition: .2s;
         }
         .LoginBtn:hover{
-            background-color: #247158;
+            background-color: transparent;
+            border: 2px solid #eaa911;
+            color: #eaa911
         }
     
     

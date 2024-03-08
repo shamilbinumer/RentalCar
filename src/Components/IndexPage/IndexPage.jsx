@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import './IndexPage.scss'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const IndexPage = () => {
+ 
   return (
     <div className='IndexMainDiv'>
         <Navbar/>
