@@ -1,6 +1,7 @@
 import admin_schema from './Models/admin.model.js'
 import car_schema from './Models/car.model.js'
 import bike_schema from './Models/bike.model.js'
+import cust_schema from './Models/cust.model.js'
 import bcrypt from 'bcrypt'
 import pkg from "jsonwebtoken";
 const {sign}=pkg
@@ -197,14 +198,14 @@ export async function editDetails(req, res) {
 
 export async function AddCustomer(req,res){
   try {
-      const {username,email,phone,password}=req.body;
-      console.log(username,email,phone,password);
-      if(!(username&&email&&phone&&password))
+      const {fullName,email,phone,image,password}=req.body;
+      console.log(fullName,email,phone,image,password);
+      if(!(fullName&&email&&phone&&password))
       return res.status(404).send("fields are empty")
   
       bcrypt.hash(password,10)    
       .then((hashedPwd)=>{
-          cust_schema.create({username,email,phone,password:hashedPwd});
+          cust_schema.create({fullName,email,phone,image,password:hashedPwd});
       })
       .then(()=>{
           res.status(201).send("sucessfully registered")

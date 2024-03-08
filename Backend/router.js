@@ -13,6 +13,7 @@ router.route("/getAllVehicle/:type").get(controller.getAllRecords);
 router.route("/getFullBikeDetails/:type/:id").get(controller.getVehicleDetails);
 router.route("/deleteItem/:type/:id").delete(controller.deleteVehicle);
 router.route("/editItem/:type/:id").patch(controller.editDetails);
+router.route("/addcust").post(controller.AddCustomer);
 
 
 
