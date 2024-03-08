@@ -192,3 +192,31 @@ export async function editDetails(req, res) {
       res.status(404).send(error);
   }
 }
+
+/////////////////cust-reg////////////////////
+
+export async function AddCustomer(req,res){
+  try {
+      const {username,email,phone,password}=req.body;
+      console.log(username,email,phone,password);
+      if(!(username&&email&&phone&&password))
+      return res.status(404).send("fields are empty")
+  
+      bcrypt.hash(password,10)    
+      .then((hashedPwd)=>{
+          cust_schema.create({username,email,phone,password:hashedPwd});
+      })
+      .then(()=>{
+          res.status(201).send("sucessfully registered")
+      })
+    .catch((error)=>{
+      res.status(500).send(error)
+     })
+      
+     } catch (error) {
+      console.log(error);
+  
+  }
+  
+}
+
