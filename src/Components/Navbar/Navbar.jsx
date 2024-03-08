@@ -40,8 +40,13 @@ const Navbar = () => {
 
   useEffect(()=>{
     getName()
-    getCust()
   },[])
+
+  useEffect(() => {
+    if (id) {
+      getCust();
+    }
+  }, [id]);
 
   return (
     <div className='NavbarMain'>
@@ -73,16 +78,43 @@ const Navbar = () => {
      <div className="bignavbar">
      <div className='ls'><h3>MyCar.com</h3></div>
       <div className="navlinks">
-        <Link className='navItems'>Home</Link>
-        <Link className='navItems'>About</Link>
-        <Link className='navItems'>Cars</Link>
-        <Link className='navItems'>Bikes</Link>
-        {/* <Link className='LoginBtn' to='/custLogin'>Sign In</Link> */}
-        {name===''?(<Link className='LoginBtn' to='/custLogin'>Sign In</Link>):(<span className='name'>{name}<div className='custPhoto'><img src={custPhoto} alt="" /></div><BsThreeDotsVertical className='userIcon' /></span>)}
+        <div><Link className='navItems'>Home</Link></div>
+        <div><Link className='navItems'>About</Link></div>
+        <div><Link className='navItems'>Cars</Link></div>
+        <div><Link className='navItems'>Bikes</Link></div>
+        <div>
+          {name===''?(<Link className='LoginBtn' to='/custLogin'>Sign In</Link>):(<div className='auth'><div className='name'>{name}</div><div className='custPhoto'><img src={custPhoto} alt="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" /></div></div>)}
+        </div>
+        {/* //////////////modal/////////////// */}
+        {/* <!-- Button trigger modal --> */}
+{/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button> */}
+
+{/* <!-- Modal --> */}
+<div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h1 className="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+        ...
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+         {/* //////////////modal/////////////// */}
       </div>
      </div>
       </div>
         {/* //////////////nav-bar-big-screen/////////////// */}
+        {/* <Link className='LoginBtn' to='/custLogin'>Sign In</Link> */}
     </div>
   )
 }
