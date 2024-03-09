@@ -19,6 +19,7 @@ const CustLogin = () => {
 
   const CustLoginDb=async(e)=>{
     e.preventDefault()
+   try {
     const res=await axios.post("http://localhost:7000/rentelCar/custlogin",{...val})
     console.log(res.data);
     const data=res.data
@@ -27,6 +28,9 @@ const CustLogin = () => {
       localStorage.setItem("cust_token",JSON.stringify(cust_token))
       nav('/')
     }
+   } catch (error) {
+   alert("Email or Password does not exist.")
+   }
   }
   return (
     <div className='CustLoginMain'>

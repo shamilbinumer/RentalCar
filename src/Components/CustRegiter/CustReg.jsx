@@ -85,7 +85,7 @@ const CustReg = () => {
                 <div><input type="email" placeholder='Email' name='email' onChange={getData} /></div>
                 <div><input type="text" placeholder='Phone' name='phone' onChange={getData} /></div>
                 <div><input type="password" placeholder='Password' name='password' onChange={getData} /></div>
-                <p>*Password must have 8 cahracters,Must have letters and numbers</p>
+                <p>*Password must have at least 8 characters with both letters and numbers</p>
                 <div><input type="file" className='file' placeholder='image' onChange={getImage} /></div>
                 <div className="sgnBtn">
                     <button>Sign Up</button>

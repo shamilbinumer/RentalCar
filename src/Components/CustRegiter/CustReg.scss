@@ -79,7 +79,7 @@
                 .input{
                     p{
                         color: #eaa911;
-                        font-size: 10px;
+                        font-size: 9px;
                         margin-bottom: 0 !important;
                     }
                     input{
@@ -91,6 +91,9 @@
                         height: 40px;
                         padding-left: 10px;
                         border-left: 4px solid #eaa911;
+                    }
+                    input:focus{
+                        outline: none;
                     }
                     .file{
                         padding-top: 4px;

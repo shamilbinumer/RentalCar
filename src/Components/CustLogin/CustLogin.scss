@@ -87,6 +87,9 @@
                         padding-left: 10px;
                         border-left: 4px solid #eaa911;
                     }
+                    input:focus{
+                        outline: none;
+                    }
                     .file{
                         padding-top: 4px;
                         color: white;

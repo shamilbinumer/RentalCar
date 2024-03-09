@@ -57,7 +57,18 @@
         }
         .auth{
             display: flex;
-            margin-left: 200px;
+            // margin-left: 200px;
+        }
+        .auth{
+            button{
+                background-color: #eaa911;
+                padding: 2px 15px;
+                border: 1px solid #eaa911;
+                color: #272727;
+                font-weight: 600;
+                margin-left: 14px;
+                border-radius: 16px;
+             }
         }
         h3{
             font-weight: 500 !important;
