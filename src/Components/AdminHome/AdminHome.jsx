@@ -24,6 +24,7 @@ const AdminHome = () => {
   const [selectedType, setSelectedType] = useState("all");
   const [modalDetails, setModalDetails] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [allCust,setAllcust]=useState([])
   const value = JSON.parse(localStorage.getItem('admin_token'));
 
   const getName = async () => {
@@ -128,11 +129,18 @@ const AdminHome = () => {
     setSearchQuery(e.target.value);
   };
 
+  const getAllcust=async()=>{
+    const res=await axios.get("http://localhost:7000/rentelCar/getAllCust")
+    console.log(res.data);
+    setAllcust(res.data)
+  }
+
 
 
   useEffect(() => {
     getName();
     getAllRecods(selectedType);
+    getAllcust()
   }, [selectedType]);
 
   const filteredVehicle = vehicle.filter(item =>
@@ -194,7 +202,7 @@ const AdminHome = () => {
         <div className="basicDetails">
           <div className="basicDetailsCard">
             <h5>Customers</h5>
-            <p>233</p>
+            <p>0{allCust.length}</p>
           </div>
           <div className="basicDetailsCard">
             <h5>Bookings</h5>

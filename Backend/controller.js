@@ -267,3 +267,11 @@ export async function getOneCust(req,res){
   console.log(task);
   res.status(200).send(task)
 }
+
+///////////////get all cust///////////
+
+
+export async function getAllCust(req,res){
+  let task=await cust_schema.find()
+  res.status(200).send(task)
+}
