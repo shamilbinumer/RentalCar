@@ -21,6 +21,7 @@ const IndexPage = () => {
               <img src="./bmw.png" alt="" />
             </div>
         </div>
+        
     </div>
   )
 }
