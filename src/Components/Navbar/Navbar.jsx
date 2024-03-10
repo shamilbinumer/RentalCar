@@ -65,9 +65,6 @@ const Navbar = () => {
       <div className="navBar">
          {/* ///////////////////mobile-navbar/////////////////// */}
       <div className="offCanvas">
-{/* <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button> */}
 <HiMiniBars3CenterLeft className='mobileNavToggle' type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" />
 
 <div className="offcanvas offcanvas-start" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">

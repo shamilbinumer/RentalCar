@@ -5,6 +5,10 @@
     // font-family: "Open Sans", sans-serif;
     font-family: "Poppins", sans-serif;
 }
+.NavbarMain{
+    position: sticky;
+    top: 0;
+}
 
 .NavbarMain{
     .offCanvas{
@@ -16,6 +20,7 @@
         }
         .offcanvas{
             width: 200px;
+            // position: sticky;
         }
     }
     .name{

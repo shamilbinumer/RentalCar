@@ -11,7 +11,7 @@ const IndexPage = () => {
         <Navbar/>
         <div className="hero">
             <div className="hero-left">
-              <h1>Easy And Fast<div>Way To <span>Rent</span> Your</div> Car</h1>
+              <h1>Easy And Fast<div>Way To <span>Rent</span> Your</div> Car.</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit alias iure molestias quod quos soluta amet quam! Non qui distinctio.</p>
               <div className='RentCarBtnDiv'>
                 <Link className='RenrCarBtn'>Rent Car</Link>
@@ -21,7 +21,15 @@ const IndexPage = () => {
               <img src="./bmw.png" alt="" />
             </div>
         </div>
-        
+        <div className="ul-big"></div>
+        <div className="itemList">
+          <div className="itemListHeading">
+            <h1>Letest <span>Inventory</span></h1>
+          </div>
+          <div className="card-main">
+
+          </div>
+        </div>
     </div>
   )
 }
