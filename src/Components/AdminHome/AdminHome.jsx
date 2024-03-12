@@ -158,27 +158,11 @@ const AdminHome = () => {
         </div>
         <div>
           <button className='logUotBtn' onClick={Logout}>LOGOUT</button>
-          {/* <FaUserCircle className="user_icon" data-bs-toggle="modal" data-bs-target="#exampleModal" /> */}
+          
 
           <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-            {/* <div className="modal-dialog profile_modal">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="exampleModalLabel">
-                    {name}
-                  </h1>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                  <p onClick={Logout}>
-                    <TbLogout2 className="logout-icon" />
-                    Logout
-                  </p>
-                  <Link className='editPrfl'><FaRegEdit className='editPrfl-icon' />Edit Profile</Link>
-                </div>
-              </div>
-            </div> */}
+          
           </div>
         </div>
       </div>
