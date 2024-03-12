@@ -27,6 +27,14 @@ const IndexPage = () => {
             <h1>Letest <span>Inventory</span></h1>
           </div>
           <div className="card-main">
+          <div className="carCard">
+                <Link>
+                  <div className="image"></div>
+                </Link>
+              </div>
+
+             
+
 
           </div>
         </div>
