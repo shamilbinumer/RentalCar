@@ -11,6 +11,7 @@ import EditCar from './Components/EditCar/EditCar'
 import EditBike from './Components/EditBike/EditBike'
 import CustReg from './Components/CustRegiter/CustReg'
 import CustLogin from './Components/CustLogin/CustLogin'
+import VehicleDetails from './Components/VehicleDetails/VehicleDetails'
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path='/editBike/:type/:id' Component={EditBike}/>
       <Route path='/custReg' Component={CustReg}/>
       <Route path='/custLogin' Component={CustLogin}/>
+      <Route path='/vehicleDetails/:type/:id' Component={VehicleDetails}/>
 
      </Routes>
      </BrowserRouter>
