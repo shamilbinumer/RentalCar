@@ -1,4 +1,7 @@
 # React + Vite
+git clone #githublink
+npm i
+npm run dev
 <img src="./public//Screenshot 2024-03-13 193545.png" alt="screenshot">
 <img src="./public//creen.png" alt="screenshot">
 
