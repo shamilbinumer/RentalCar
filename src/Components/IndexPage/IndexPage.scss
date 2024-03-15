@@ -121,6 +121,9 @@
                 padding: 10px;
                 transition: .3s;
             }
+            .carCard:hover{
+                transform: scale(1.05);
+            }
             .noItemFound{
                 color: #eaa911;
             }
@@ -223,6 +226,7 @@
                             color: #eaa911;
                             margin-right: 10px;
                             transition: .2s;
+                            cursor: pointer;
                         }
                         .favIcon:hover{
                             color: white;
@@ -233,6 +237,13 @@
                             border: 1px solid gray;
                             padding: 6px 20px;
                         }
+                        .rentLink{
+                            text-decoration: none;
+                            color: #2b2b2b;
+                        }
+                        .rentLink:hover{
+                            color: #eaa911;
+                        }
                         button{
                             background-color: #eaa911;
                             border: 1px solid #eaa911;
@@ -241,10 +252,11 @@
                             font-size: 14px;
                             font-weight: 600;
                             transition: .3s;
+                            color: #2b2b2b !important;
                         }
                         button:hover{
                             background-color: #2b2b2b;
-                            color: #eaa911;
+                            color: #eaa911 !important;
                         }
                     }
                 }

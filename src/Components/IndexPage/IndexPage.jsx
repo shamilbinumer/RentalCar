@@ -176,7 +176,7 @@ const IndexPage = () => {
             <div className="price">₹ {dt.rentPerDay}<span> / Day</span></div>
             <div className="btns">
               <FaRegHeart className='favIcon' onClick={() => addToFavourate( dt.type,dt._id)} />
-              <button>Rent Now</button>
+              <button><Link className='rentLink'>Rent Now</Link></button>
             </div>
             </div></>
           )}
