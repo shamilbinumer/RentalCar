@@ -292,3 +292,19 @@ export async function AddToFavourate(req, res) {
     res.status(500).send("Internal Server Error");
   }
 }
+
+//////////////get Favourate vehicleDetails/////////////
+
+
+export async function getFavourateVehicle(req,res){
+ try {
+  const{id}=req.params;
+  console.log(id);
+  let task=await fav_schema.find({cust_id:id})
+  console.log(task);
+  res.status(200).send(task)
+ } catch (error) {
+  console.error(error);
+  res.status(500).send("Internal Server Error");
+ }
+}

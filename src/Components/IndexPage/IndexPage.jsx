@@ -8,11 +8,13 @@ import { LuFuel } from "react-icons/lu";
 import { GiGearStickPattern } from "react-icons/gi";
 import { IoMdColorFill } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 
 const IndexPage = () => {
   const [vehicle,setVehicle]=useState([])
   const [searchQuery, setSearchQuery] = useState('');
   const [custId,setCustId]=useState("")
+  const [favList,setFavList]=useState([])
   const value = JSON.parse(localStorage.getItem('cust_token'));
   const [favourate,setFavourate]=useState({
     cust_id:"",
@@ -69,7 +71,7 @@ const IndexPage = () => {
       const res=await axios.post("http://localhost:7000/rentelCar/addToFavourate",{
         ...favourateData,cust_id:custId,Product_id:PRODUCT_ID
       })
-      console.log(res.data);
+      // console.log(res.data);
       if(res){
         alert("Added to Favourate")
       }
@@ -83,10 +85,19 @@ const IndexPage = () => {
     alert("This Vehicle Is in Rent")
   }
 
+  const getFavProducts=async()=>{
+    const res= await axios.get(`http://localhost:7000/rentelCar/getFavourateVehicle/${custId}`)
+    // console.log(res.data);
+    setFavList(res.data)
+    getFavProducts();
+    // console.log(favList);
+  }
+
   useEffect(()=>{
     getVehicle()
     getName()
-  },[])
+    getFavProducts(custId)
+  },[custId])
 
   const filteredVehicle = vehicle.filter(item =>
     item.model.toLowerCase().includes(searchQuery.toLowerCase())
@@ -175,7 +186,12 @@ const IndexPage = () => {
            <div className="prising">
             <div className="price">₹ {dt.rentPerDay}<span> / Day</span></div>
             <div className="btns">
-              <FaRegHeart className='favIcon' onClick={() => addToFavourate( dt.type,dt._id)} />
+              {/* <FaRegHeart className='favIcon' onClick={() => addToFavourate( dt.type,dt._id)} /> */}
+              {favList.map(item => item.Product_id).includes(dt._id) ? (
+                   <FaHeart className='favIcon' id='inFav' />
+                  ) : (
+                    <FaRegHeart className='favIcon' onClick={() => addToFavourate(dt.type, dt._id)} />
+              )}
               <button><Link className='rentLink'>Rent Now</Link></button>
             </div>
             </div></>

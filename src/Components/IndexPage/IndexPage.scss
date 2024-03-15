@@ -121,9 +121,9 @@
                 padding: 10px;
                 transition: .3s;
             }
-            .carCard:hover{
-                transform: scale(1.05);
-            }
+            // .carCard:hover{
+            //     transform: scale(1.05);
+            // }
             .noItemFound{
                 color: #eaa911;
             }
@@ -227,6 +227,10 @@
                             margin-right: 10px;
                             transition: .2s;
                             cursor: pointer;
+                        }
+                        #inFav{
+                            color: #b40000;
+                            background-color: white;
                         }
                         .favIcon:hover{
                             color: white;

@@ -81,6 +81,23 @@
             color: #eaa911;
             // border-bottom: 4px solid black;
         }
+        .cartMain{
+            position: relative;
+        }
+        .count{
+            color: #3e2f0c;
+            position: absolute;
+            top: -10%;
+            left: 30%;
+            background-color: #ffff00;
+            padding: 1px 7px;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 800
+        }
+        .cart{
+            font-size: 25px;
+        }
         .navItems{
             text-decoration: none;
             color: #eaa911;

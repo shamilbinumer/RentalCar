@@ -5,6 +5,7 @@ import CustLogin from '../CustLogin/CustLogin';
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaCircleUser } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
 import axios from 'axios';
 
 const Navbar = () => {
@@ -87,6 +88,7 @@ const Navbar = () => {
         <div><Link className='navItems'>ABOUT</Link></div>
         <div><Link className='navItems'>CARS</Link></div>
         <div><Link className='navItems'>BIKES</Link></div>
+        <div className='cartMain'><Link className='navItems'><FaRegHeart className='cart' /></Link><div className="count">1</div></div>
         <div>
           {name===''?(<Link className='LoginBtn' to='/custLogin'>Sign In</Link>):(<div className='auth'><div className='custPhoto'><img src={custPhoto} alt="" /></div><button onClick={logout}>Logout</button></div>)}
         </div>
