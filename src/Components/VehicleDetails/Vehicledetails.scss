@@ -1,0 +1,87 @@
+.vehicleDetailsMain{
+    background-color: #272727;
+    height: 100vh;
+    width: 100%;
+}
+.vehicleDetailsMain{
+    .detailsMain{
+        width: 70%;
+        height: auto;
+        background-color: rgba(204, 204, 204, 0.186);
+        // border: 2px solid #eaa911;
+        // border-radius: 10px;
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        padding: 15px;
+    }
+    .detailsMain{
+        .detailsMainLeft{
+            width: 50%;
+        }
+        .detailsMainLeft{
+            .Back{
+                font-size: 30px;
+                color: aliceblue;
+            }
+            .img{
+                height: 100%;
+                width: 100%;
+                // background-color: rgb(123, 123, 123);
+                padding: 30px;
+                padding-top: 90px;
+            }
+            .img{
+                img{
+                    width: 100%;
+                }
+               
+            }
+        }
+        .detailsMainRight{
+            width: 50%;
+            color: white !important;
+        }
+        .detailsMainRight{
+            .table{
+                margin-top: 30px;
+                color: white;
+                width: 100% !important;
+                // border: 1px solid;
+            }
+            td{
+                text-align: center;
+                padding:6px;
+                font-size: 17px;
+                margin-bottom: 4px !important;
+                // border: 1px solid;
+                // background-color: white;
+                color: rgb(255, 255, 255);
+            }
+            .td{
+                background-color: #272727;
+                color: rgb(255, 255, 255);
+            }
+            button{
+                width: 100%;
+                border: 2px solid #eaa911;
+                background-color: #eaa911;
+                height: 40px;
+                font-weight: 700;
+                transition: .2s;
+            }
+            .isInRenr{
+                background-color: gray;
+                border: 2px solid gray;
+            }
+            .isInRenr:hover{
+                background-color: gray;
+                color: rgb(0, 0, 0);
+            }
+            button:hover{
+                background-color: transparent;
+                color: white;
+            }
+        }
+    }
+}

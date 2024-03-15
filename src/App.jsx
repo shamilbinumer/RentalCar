@@ -12,6 +12,7 @@ import EditBike from './Components/EditBike/EditBike'
 import CustReg from './Components/CustRegiter/CustReg'
 import CustLogin from './Components/CustLogin/CustLogin'
 import VehicleDetails from './Components/VehicleDetails/VehicleDetails'
+import FavouratePage from './Favourate/FavouratePage'
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
       <Route path='/custReg' Component={CustReg}/>
       <Route path='/custLogin' Component={CustLogin}/>
       <Route path='/vehicleDetails/:type/:id' Component={VehicleDetails}/>
+      <Route path='/FavouratePage/:id' Component={FavouratePage}/>
 
      </Routes>
      </BrowserRouter>

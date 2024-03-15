@@ -137,7 +137,7 @@ const IndexPage = () => {
             filteredVehicle.map((dt,index)=>
           <div className="carCard" id='disableCard' key={index}>
             {dt.isActive==false?( <>
-              <Link className='cardLink'>
+              <Link className='cardLink' to={`/vehicleDetails/${dt.type}/${dt._id}`}>
             <div className="image"><img src={dt.photo} alt="" /></div>
             <div className="nameAndYear">
               <div className="name">{dt.model}</div>
