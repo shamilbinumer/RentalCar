@@ -19,6 +19,7 @@ router.route("/custlogin").post(controller.custLogin);
 router.route("/custAuth").get(Auth,controller.CustAuth);
 router.route("/getOneCust/:id").get(controller.getOneCust);
 router.route("/getAllCust").get(controller.getAllCust);
+router.route("/addToFavourate").post(controller.AddToFavourate);
 
 
 

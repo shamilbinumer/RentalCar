@@ -12,12 +12,44 @@ import { FaRegHeart } from "react-icons/fa6";
 const IndexPage = () => {
   const [vehicle,setVehicle]=useState([])
   const [searchQuery, setSearchQuery] = useState('');
+  const [custId,setCustId]=useState("")
+  const value = JSON.parse(localStorage.getItem('cust_token'));
+  const [favourate,setFavourate]=useState({
+    cust_id:"",
+    Product_id:"",
+    brand:"",
+    colour:"",
+    fuel_type:"",
+    isActive:"",
+    model:"",
+    photo:"",
+    rentPerDay:"",
+    rentPerMonth:"",
+    seatCapacity:"",
+    transmision:"",
+    type:"",
+    yearOfRegistration:"",
+
+  })
+
+  const getName = async () => {
+    try {
+      const res = await axios.get('http://localhost:7000/rentelCar/custAuth', {
+        headers: { Authorization: `Bearer ${value}` },
+      });
+      // console.log(res.data.id);
+      setCustId(res.data.id)
+      // console.log("cust is",custId);
+    } catch (error) {
+      console.error('Error fetching user name:', error);
+    }
+  };
 
   const getVehicle=async()=>{
     const carRes = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/car`);
     const bikeRes = await axios.get(`http://localhost:7000/rentelCar/getAllVehicle/bike`);
     setVehicle([...carRes.data, ...bikeRes.data]);
-    console.log(vehicle);
+    // console.log(vehicle);
   }
 
 
@@ -25,8 +57,35 @@ const IndexPage = () => {
     setSearchQuery(e.target.value);
   };
 
+  const addToFavourate=async(type,productId)=>{
+    try {
+      // console.log(productId,type);
+      const getDataRes=await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${type}/${productId}`)
+      console.log(getDataRes.data);
+      const favourateData = getDataRes.data;
+      setFavourate(favourateData);
+      console.log(favourateData._id);
+      const PRODUCT_ID=favourateData._id
+      const res=await axios.post("http://localhost:7000/rentelCar/addToFavourate",{
+        ...favourateData,cust_id:custId,Product_id:PRODUCT_ID
+      })
+      console.log(res.data);
+      if(res){
+        alert("Added to Favourate")
+      }
+    } catch (error) {
+      alert("Error while Adding")
+    }
+  }
+
+  const NotAvailabeHandleChange=(e)=>{
+    e.preventDefault()
+    alert("This Vehicle Is in Rent")
+  }
+
   useEffect(()=>{
     getVehicle()
+    getName()
   },[])
 
   const filteredVehicle = vehicle.filter(item =>
@@ -65,34 +124,9 @@ const IndexPage = () => {
             <span className='noItemFound'>No item found</span>
           ):(
             filteredVehicle.map((dt,index)=>
-          <div className="carCard" key={index}>
-            {dt.isActive==false?( <Link className='cardLink'>
-            <div className="image"><img src={dt.photo} alt="" /><span>In Rent</span></div>
-            <div className="nameAndYear">
-              <div className="name">{dt.model}</div>
-              <div className="year"><span>{dt.yearOfRegistration}</span></div>
-            </div>
-           <div className="detailsMain">
-           <div className="details">
-              {/* <div className="detailsLeft"><p><FaUsers className='detailsIcon' /> {dt.seatCapacity} People</p></div> */}
-              <div className="detailsLeft"><p><FaUsers className='detailsIcon' />{dt.type=='bike'?(<span>2 People</span>):(<span>{dt.seatCapacity} People</span>)}</p></div>
-
-              <div className="detailsRight"><p><LuFuel className='detailsIcon'/> {dt.type=='bike'?(<span>Petrol</span>):(<span>{dt.fuel_type}</span>)}</p></div>
-            </div>
-            <div className="details">
-              <div className="detailsLeft"><p><GiGearStickPattern className='detailsIcon' />{dt.type=='bike'?(<span>Manual</span>):(<span>{dt.transmision}</span>)}</p></div>
-              <div className="detailsRight"><p><IoMdColorFill className='detailsIcon'/> {dt.colour}</p></div>
-            </div>
-           </div>
-           <div className="prising">
-            <div className="price">₹ {dt.rentPerDay}<span> / Day</span></div>
-            <div className="btns">
-              <FaRegHeart className='favIcon' />
-              {/* <button>Not Available</button> */}
-            </div>
-
-           </div>
-          </Link>):(<Link className='cardLink' to={`/vehicleDetails/${dt.type}/${dt._id}`}>
+          <div className="carCard" id='disableCard' key={index}>
+            {dt.isActive==false?( <>
+              <Link className='cardLink'>
             <div className="image"><img src={dt.photo} alt="" /></div>
             <div className="nameAndYear">
               <div className="name">{dt.model}</div>
@@ -110,15 +144,42 @@ const IndexPage = () => {
               <div className="detailsRight"><p><IoMdColorFill className='detailsIcon'/> {dt.colour}</p></div>
             </div>
            </div>
+           </Link>
            <div className="prising">
             <div className="price">₹ {dt.rentPerDay}<span> / Day</span></div>
             <div className="btns">
-              <FaRegHeart className='favIcon' />
-              <button>Rent Now</button>
+              {/* <FaRegHeart className='favIcon' onClick={() => addToFavourate( dt.type,dt._id)} /> */}
+              <button className='notAvailable' onClick={NotAvailabeHandleChange}>Not Available</button>
             </div>
 
-           </div>
-          </Link>)}
+           </div></>
+          ):(<>
+          <Link className='cardLink' to={`/vehicleDetails/${dt.type}/${dt._id}`}>
+            <div className="image"><img src={dt.photo} alt="" /></div>
+            <div className="nameAndYear">
+              <div className="name">{dt.model}</div>
+              <div className="year"><span>{dt.yearOfRegistration}</span></div>
+            </div>
+           <div className="detailsMain">
+           <div className="details">
+              {/* <div className="detailsLeft"><p><FaUsers className='detailsIcon' /> {dt.seatCapacity} People</p></div> */}
+              <div className="detailsLeft"><p><FaUsers className='detailsIcon' />{dt.type=='bike'?(<span>2 People</span>):(<span>{dt.seatCapacity} People</span>)}</p></div>
+
+              <div className="detailsRight"><p><LuFuel className='detailsIcon'/> {dt.type=='bike'?(<span>Petrol</span>):(<span>{dt.fuel_type}</span>)}</p></div>
+            </div>
+            <div className="details">
+              <div className="detailsLeft"><p><GiGearStickPattern className='detailsIcon' />{dt.type=='bike'?(<span>Manual</span>):(<span>{dt.transmision}</span>)}</p></div>
+              <div className="detailsRight"><p><IoMdColorFill className='detailsIcon'/> {dt.colour}</p></div>
+            </div>
+           </div></Link>
+           <div className="prising">
+            <div className="price">₹ {dt.rentPerDay}<span> / Day</span></div>
+            <div className="btns">
+              <FaRegHeart className='favIcon' onClick={() => addToFavourate( dt.type,dt._id)} />
+              <button>Rent Now</button>
+            </div>
+            </div></>
+          )}
           
         </div>)
           )

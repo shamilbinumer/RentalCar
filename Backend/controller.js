@@ -2,6 +2,7 @@ import admin_schema from './Models/admin.model.js'
 import car_schema from './Models/car.model.js'
 import bike_schema from './Models/bike.model.js'
 import cust_schema from './Models/cust.model.js'
+import fav_schema from './Models/fav.model.js'
 import bcrypt from 'bcrypt'
 import pkg from "jsonwebtoken";
 const {sign}=pkg
@@ -275,4 +276,19 @@ export async function getOneCust(req,res){
 export async function getAllCust(req,res){
   let task=await cust_schema.find()
   res.status(200).send(task)
+}
+
+//////////////////add to favourite//////////////////
+
+
+export async function AddToFavourate(req, res) {
+  try {
+     const { ...vehicledetails } = req.body;
+    const task=await fav_schema.create({ ...vehicledetails });
+    console.log(task);
+    res.status(200).send(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 }
