@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './FavouratePage.scss'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import Navbar from '../Components/Navbar/Navbar';
+import Navbar from '../Navbar/Navbar';
 import axios from 'axios';
 
-const FavouratePage = () => {
-    const navToDetails=useNavigate()
+const FavouratePage = () => { 
+    const nav=useNavigate()
     const {id}=useParams()
     const [products,setProducts]=useState([])
    
@@ -56,8 +56,8 @@ const FavouratePage = () => {
               </table>
             </div>
             <div className="btns">
-              <button onClick={()=>navToDetails(`/vehicleDetails/${dt.type}/${dt.Product_id}`)} className='view'>View Details</button>
-              <button className='bookNow'>Book Now</button>
+              <button onClick={()=>nav(`/vehicleDetails/${dt.type}/${dt.Product_id}`)} className='view'>View Details</button>
+              <button className='bookNow' onClick={()=>nav('/BookingPage')}>Book Now</button>
               <button className='Delete' onClick={()=>DeleteItem(dt._id)}>Remove</button>
             </div>
           </div>
