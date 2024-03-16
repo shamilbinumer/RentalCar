@@ -21,6 +21,7 @@ router.route("/getOneCust/:id").get(controller.getOneCust);
 router.route("/getAllCust").get(controller.getAllCust);
 router.route("/addToFavourate").post(controller.AddToFavourate);
 router.route("/getFavourateVehicle/:id").get(controller.getFavourateVehicle);
+router.route("/deleteFavProduct/:id").delete(controller.deleteFavProduct);
 
 
 

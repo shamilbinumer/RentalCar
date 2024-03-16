@@ -308,3 +308,15 @@ export async function getFavourateVehicle(req,res){
   res.status(500).send("Internal Server Error");
  }
 }
+
+/////////////delete FavProduct///////////////////
+
+export async function deleteFavProduct(req,res){
+  try {
+    const {id}=req.params;
+    let task = await fav_schema.deleteOne({_id:id})
+    res.status(200).send(task)
+  } catch (error) {
+    console.log(error);
+  }
+}

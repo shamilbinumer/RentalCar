@@ -13,6 +13,7 @@ const Navbar = () => {
   const [name,setName]=useState('')
   const [id,setId]=useState('')
   const [custPhoto,setCustPhoto]=useState('')
+  const [favProd,setFavProd]=useState([])
   const value = JSON.parse(localStorage.getItem('cust_token'));
   // http://localhost:7000/rentelCar/custAuth
 
@@ -47,9 +48,15 @@ const Navbar = () => {
     }
   }
 
+  const FavProducts=async()=>{
+    const res=await axios.get(`http://localhost:7000/rentelCar/getFavourateVehicle/${id}`)
+    setFavProd(res.data)
+}
+
   useEffect(()=>{
     getName()
-  },[])
+    FavProducts(id)
+  },[id])
 
   useEffect(() => {
     if (id) {
@@ -84,11 +91,11 @@ const Navbar = () => {
      <div className="bignavbar">
      <div className='ls'><h3>MyCar.com</h3></div>
       <div className="navlinks">
-        <div><Link className='navItems'>HOME</Link></div>
+        <div><Link className='navItems' to='/'>HOME</Link></div>
         <div><Link className='navItems'>ABOUT</Link></div>
         <div><Link className='navItems'>CARS</Link></div>
         <div><Link className='navItems'>BIKES</Link></div>
-        <div className='cartMain'><Link className='navItems'><FaRegHeart className='cart' /></Link><div className="count">1</div></div>
+        <div className='cartMain'><Link className='navItems' to={`/favouratePage/${id}`}><FaRegHeart className='cart' /></Link><div className="count">{favProd.length}</div></div>
         <div>
           {name===''?(<Link className='LoginBtn' to='/custLogin'>Sign In</Link>):(<div className='auth'><div className='custPhoto'><img src={custPhoto} alt="" /></div><button onClick={logout}>Logout</button></div>)}
         </div>
