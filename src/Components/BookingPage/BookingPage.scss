@@ -32,7 +32,7 @@
             }
             .ul{
                 border-bottom: 5px solid #eaa911;
-                width: 500px;
+                width: 90%;
                 margin: auto;
                 margin-top: 40px;
                 margin-bottom: 40px;
@@ -89,18 +89,25 @@
                 .input{
                     p{
                         color: #eaa911;
-                        font-size: 9px;
+                        font-size: 12px;
                         margin-bottom: 0 !important;
                     }
                     input{
                         color: #eaa911;
-                        width: 100%;
+                        width: 48%;
+                        margin-right: 5px;
                         border: none;
                         background-color: #373737;
                         margin-bottom: 10px;
                         height: 40px;
                         padding-left: 10px;
                         border-left: 4px solid #eaa911;
+                    }
+                    .radio{
+                        width: 16px;
+                    }
+                    span{
+                        color: white;
                     }
                     input:focus{
                         outline: none;

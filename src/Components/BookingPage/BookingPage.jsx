@@ -6,7 +6,31 @@ import { Link, useParams } from 'react-router-dom'
 
 const BookingPage = () => {
     const {type,prod_id}=useParams()
+    const value = JSON.parse(localStorage.getItem('cust_token'));
+    const [custId,setCustId]=useState('')
+    const [customer,setCustomer]=useState({})
     const [vehicle,setVehicle]=useState({})
+
+    const getName = async () => {
+        try {
+          const res = await axios.get('http://localhost:7000/rentelCar/custAuth', {
+            headers: { Authorization: `Bearer ${value}` },
+          });
+          setCustId(res.data.id)
+          console.log(custId);
+        } catch (error) {
+          console.error('Error fetching user name:', error);
+        }
+      };
+
+      
+  const getCust=async()=>{
+    const res=await axios.get(`http://localhost:7000/rentelCar/getOneCust/${custId}`)
+   console.log(res.data,"dhvsnhfvsdhvhfv");
+   setCustomer(res.data)
+   console.log(customer.fullName);
+  }
+    
 
     const Details=async()=>{
         const res=await axios.get(`http://localhost:7000/rentelCar/getFullBikeDetails/${type}/${prod_id}`)
@@ -15,8 +39,10 @@ const BookingPage = () => {
         console.log(vehicle);
     }
     useEffect(()=>{
+        getName()
+        getCust(custId)
         Details()
-    },[])
+    },[custId])
 
     
   return (
@@ -41,44 +67,22 @@ const BookingPage = () => {
                     <img src={vehicle.photo} alt="" />
                 </div>
               <form action="">
-              <div className="dropdown">
-      <div className="control">
-        <div className="selected-value">
-          <input
-            ref={inputRef}
-            type="text"
-            value={getDisplayValue()}
-            name="searchTerm"
-            onChange={(e) => {
-              setQuery(e.target.value);
-              handleChange(null);
-            }}
-            onClick={toggle}
-          />
-        </div>
-        <div className={`arrow ${isOpen ? "open" : ""}`}></div>
-      </div>
-
-      <div className={`options ${isOpen ? "open" : ""}`}>
-        {filter(options).map((option, index) => {
-          return (
-            <div
-              onClick={() => selectOption(option)}
-              className={`option ${
-                option[label] === selectedVal ? "selected" : ""
-              }`}
-              key={`${id}-${index}`}
-            >
-              {option[label]}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-              <div><input type="text" placeholder='Full Name' name='fullName' /></div>
-                <div><input type="email" placeholder='Email' name='email'  /></div>
-                <div><input type="text" placeholder='Phone' name='phone'  /></div>
-                <div><input type="file" className='file' placeholder='image' /></div>
+              <div>
+                <input type="text" placeholder='Full Name' name='fullName' value={customer.fullName} />
+                <input type="email" placeholder='Email' name='email' value={customer.email} />
+              </div>
+                <div>
+                    <input type="text" placeholder='Phone Number' name='phone' value={customer.phone}  />
+                    <input type="text" placeholder='Alternate Phone Number (Optional)' name='phone'  />
+                </div>
+                <p>*Upload your id proof(Adhar,Liscence like this..)</p>
+                <div>
+                    <input type="file" className='file' placeholder='image' />
+                    <input type="radio" className='radio' name='payment' value='Pay using upi'/>
+                    <span>Pay using Upi</span>
+                    <input type="radio" className='radio' name='payment' value='Pay later'/>
+                    <span>Pay later</span><br></br>
+                </div>
                 <div className="sgnBtn">
                     <button>Book Now</button>
                  
