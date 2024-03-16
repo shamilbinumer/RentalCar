@@ -34,7 +34,7 @@ function App() {
       <Route path='/custLogin' Component={CustLogin}/>
       <Route path='/vehicleDetails/:type/:id' Component={VehicleDetails}/>
       <Route path='/FavouratePage/:id' Component={FavouratePage}/>
-      <Route path='/BookingPage' Component={BookingPage}/>
+      <Route path='/BookingPage/:type/:prod_id' Component={BookingPage}/>
      </Routes>
      </BrowserRouter>
     </>

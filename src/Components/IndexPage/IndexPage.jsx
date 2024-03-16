@@ -192,7 +192,7 @@ const IndexPage = () => {
                   ) : (
                     <FaRegHeart className='favIcon' onClick={() => addToFavourate(dt.type, dt._id)} />
               )}
-              <button><Link className='rentLink'>Rent Now</Link></button>
+              <button><Link className='rentLink' to={`/BookingPage/${dt.type}/${dt._id}`}>Rent Now</Link></button>
             </div>
             </div></>
           )}

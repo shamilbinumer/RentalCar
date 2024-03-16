@@ -57,7 +57,7 @@ const FavouratePage = () => {
             </div>
             <div className="btns">
               <button onClick={()=>nav(`/vehicleDetails/${dt.type}/${dt.Product_id}`)} className='view'>View Details</button>
-              <button className='bookNow' onClick={()=>nav('/BookingPage')}>Book Now</button>
+              <button className='bookNow' onClick={()=>nav(`/BookingPage/${dt.type}/${dt.Product_id}`)}>Book Now</button>
               <button className='Delete' onClick={()=>DeleteItem(dt._id)}>Remove</button>
             </div>
           </div>
