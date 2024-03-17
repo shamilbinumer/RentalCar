@@ -64,7 +64,7 @@ const BookingPage = () => {
                 <h3>BOOK YOUR CAR</h3>
                <div className="input">
                 <div className="vehicleImg">
-                    <img src={vehicle.photo} alt=""  />
+                    <img src={vehicle.photo} alt=""/>
                 </div>
               <form action="">
               <div>
