@@ -61,7 +61,7 @@ const BookingPage = () => {
         </div>
         <div className="MainCardRight">
             <div className="formData">
-                <h3>BOOK YOUR CAR</h3>
+                <h3>{vehicle.type=="car"?"BOOK YOUR CAR":"BOOK YOUR BIKE"}</h3>
                <div className="input">
                 <div className="vehicleImg">
                     <img src={vehicle.photo} alt=""/>
