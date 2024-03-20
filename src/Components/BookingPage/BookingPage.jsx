@@ -8,7 +8,7 @@ const BookingPage = () => {
     const {type,prod_id}=useParams()
     const value = JSON.parse(localStorage.getItem('cust_token'));
     const [custId,setCustId]=useState('')
-    const [customer,setCustomer]=useState({})
+    const [val,setVal]=useState({})
     const [vehicle,setVehicle]=useState({})
 
     const getName = async () => {
@@ -27,7 +27,7 @@ const BookingPage = () => {
   const getCust=async()=>{
     const res=await axios.get(`http://localhost:7000/rentelCar/getOneCust/${custId}`)
    console.log(res.data,"dhvsnhfvsdhvhfv");
-   setCustomer(res.data)
+   setVal(res.data)
    console.log(customer.fullName);
   }
     
@@ -68,12 +68,12 @@ const BookingPage = () => {
                 </div>
               <form action="">
                 <div>
-                  <select name="" id="" className='PickupLocation'>
+                  <select name="" id="" className='PickupLocation' >
                     <option value="">Select Pickup Location</option>
-                    <option value="">Perinthalmanna</option>
-                    <option value="">Thootha</option>
-                    <option value="">Melatur</option>
-                    <option value="">Chemmaniyode</option>
+                    <option value="Perinthalmanna">Perinthalmanna</option>
+                    <option value="Thootha">Thootha</option>
+                    <option value="Melatur">Melatur</option>
+                    <option value="Chemmaniyode">Chemmaniyode</option>
                   </select>
                 </div>
                 <div>
@@ -81,11 +81,11 @@ const BookingPage = () => {
                     <input type="date" className='PickupForDate'/>
                 </div>
               <div>
-                <input type="text" placeholder='Full Name' name='fullName' value={customer.fullName} />
-                <input type="email" placeholder='Email' name='email' value={customer.email} />
+                <input type="text" placeholder='Full Name' name='fullName' value={val.fullName} />
+                <input type="email" placeholder='Email' name='email' value={val.email} />
               </div>
                 <div>
-                    <input type="text" placeholder='Phone Number' name='phone' value={customer.phone}  />
+                    <input type="text" placeholder='Phone Number' name='phone' value={val.phone}  />
                     <input type="text" placeholder='Alternate Phone Number (Optional)' name='phone'  />
                 </div>
                 <p>*Upload your id proof(Adhar,Liscence like this..)</p>

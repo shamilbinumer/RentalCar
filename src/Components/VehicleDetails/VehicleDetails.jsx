@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './Vehicledetails.scss'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { FaArrowCircleLeft } from "react-icons/fa";
 import Navbar from '../Navbar/Navbar'
 
 const VehicleDetails = () => {
+  const nav=useNavigate()
     const {type,id}=useParams()
     console.log(type,id);
     const [vehicle,setVehicle]=useState({})
@@ -71,7 +72,7 @@ const VehicleDetails = () => {
                 <td className='td'>Rs {vehicle.rentPerMonth}</td>
               </tr>
             </table>
-           {vehicle.isActive==true?( <button>Book Now</button>):( <button className='isInRenr'>Not Available</button>)}
+           {vehicle.isActive==true?( <button onClick={()=>nav(`/BookingPage/${vehicle.type}/${vehicle._id}`)}>Book Now</button>):( <button className='isInRenr'>Not Available</button>)}
           </div>
         </div>
       </div>

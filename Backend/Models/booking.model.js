@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
 const booking_schema=new mongoose.Schema({
+   cust_id:{type:String},
+   prod_id:{type:String},
    pickupLocation:{type:String},
-   dateForBooking:{type:Date},
+   dateForBooking:{type:String},
    name:{type:String},
    email:{type:String},
    number:{type:String},

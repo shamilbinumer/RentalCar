@@ -328,7 +328,8 @@ export async function deleteFavProduct(req,res){
 export async function AddToBookings(req, res) {
   try {
      const { ...bookingDetails } = req.body;
-    const task=await fav_schema.create({ ...bookingDetails });
+     console.log(req.body);
+    const task=await booking_schema.create({ ...bookingDetails });
     console.log(task);
     res.status(200).send(task);
   } catch (error) {
