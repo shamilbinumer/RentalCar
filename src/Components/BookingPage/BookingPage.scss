@@ -64,6 +64,7 @@
                 height: auto;
                 // background-color: white;
                 margin: auto;
+                margin-bottom: 20px;
                 overflow: hidden;
                 img{
                     width: 100%;
@@ -109,12 +110,33 @@
                     span{
                         color: white;
                     }
-                    input:focus{
+                    input:focus,.PickupLocation:focus{
                         outline: none;
+                    }
+                    .PickupLocation{
+                        color: #eaa911;
+                        width: 96.6%;
+                        margin-right: 5px;
+                        border: none;
+                        background-color: #373737;
+                        margin-bottom: 10px;
+                        height: 40px;
+                        padding-left: 10px;
+                        border-left: 4px solid #eaa911;
+                    }
+                    .PickupForDate{
+                        width: 96.6% !important;
+                    }
+                    // input::placeholder{
+                    //     color: #eaa91185;
+                    // }
+                    .IdProofAndPayment{
+                        display: flex;
                     }
                     .file{
                         padding-top: 4px;
                         color: white;
+                        width: 91%;
                     }
                     .sgnBtn{
                         text-align: center;

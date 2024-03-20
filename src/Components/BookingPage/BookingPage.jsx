@@ -41,8 +41,8 @@ const BookingPage = () => {
     useEffect(()=>{
         getName()
         getCust()
-        Details()
-    },[])
+        Details(custId)
+    },[custId])
 
     
   return (
@@ -67,6 +67,19 @@ const BookingPage = () => {
                     <img src={vehicle.photo} alt=""/>
                 </div>
               <form action="">
+                <div>
+                  <select name="" id="" className='PickupLocation'>
+                    <option value="">Select Pickup Location</option>
+                    <option value="">Perinthalmanna</option>
+                    <option value="">Thootha</option>
+                    <option value="">Melatur</option>
+                    <option value="">Chemmaniyode</option>
+                  </select>
+                </div>
+                <div>
+                    <p>*Date Booking for</p>
+                    <input type="date" className='PickupForDate'/>
+                </div>
               <div>
                 <input type="text" placeholder='Full Name' name='fullName' value={customer.fullName} />
                 <input type="email" placeholder='Email' name='email' value={customer.email} />
@@ -76,12 +89,12 @@ const BookingPage = () => {
                     <input type="text" placeholder='Alternate Phone Number (Optional)' name='phone'  />
                 </div>
                 <p>*Upload your id proof(Adhar,Liscence like this..)</p>
-                <div>
-                    <input type="file" className='file' placeholder='image' />
-                    <input type="radio" className='radio' name='payment' value='Pay using upi'/>
-                    <span>Pay using Upi</span>
-                    <input type="radio" className='radio' name='payment' value='Pay later'/>
-                    <span>Pay later</span><br></br>
+                <div className='IdProofAndPayment'>
+                   <div> <input type="file" className='file' placeholder='image' /></div>
+                   <div> <input type="radio" className='radio' name='payment' value='Pay using upi'/>
+                    <span>Pay using Upi</span></div>
+                   <div> <input type="radio" className='radio' name='payment' value='Pay later'/>
+                    <span>Pay later</span><br></br></div>
                 </div>
                 <div className="sgnBtn">
                     <button>Book Now</button>
