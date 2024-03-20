@@ -3,6 +3,8 @@ import car_schema from './Models/car.model.js'
 import bike_schema from './Models/bike.model.js'
 import cust_schema from './Models/cust.model.js'
 import fav_schema from './Models/fav.model.js'
+import booking_schema from './Models/booking.model.js'
+
 import bcrypt from 'bcrypt'
 import pkg from "jsonwebtoken";
 const {sign}=pkg
@@ -318,5 +320,19 @@ export async function deleteFavProduct(req,res){
     res.status(200).send(task)
   } catch (error) {
     console.log(error);
+  }
+}
+
+/////////////add to Bookings////////////////////
+
+export async function AddToBookings(req, res) {
+  try {
+     const { ...bookingDetails } = req.body;
+    const task=await fav_schema.create({ ...bookingDetails });
+    console.log(task);
+    res.status(200).send(task);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
 }
