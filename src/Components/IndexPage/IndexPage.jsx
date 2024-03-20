@@ -89,15 +89,15 @@ const IndexPage = () => {
     const res= await axios.get(`http://localhost:7000/rentelCar/getFavourateVehicle/${custId}`)
     // console.log(res.data);
     setFavList(res.data)
-    getFavProducts();
+    // getFavProducts();
     // console.log(favList);
   }
 
   useEffect(()=>{
     getVehicle()
     getName()
-    getFavProducts(custId)
-  },[custId])
+    getFavProducts()
+  },[])
 
   const filteredVehicle = vehicle.filter(item =>
     item.model.toLowerCase().includes(searchQuery.toLowerCase())

@@ -40,9 +40,9 @@ const BookingPage = () => {
     }
     useEffect(()=>{
         getName()
-        getCust(custId)
+        getCust()
         Details()
-    },[custId])
+    },[])
 
     
   return (
