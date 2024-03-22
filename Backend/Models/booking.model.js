@@ -4,7 +4,7 @@ const booking_schema=new mongoose.Schema({
    prod_id:{type:String},
    pickupLocation:{type:String},
    dateForBooking:{type:String},
-   name:{type:String},
+   fullName:{type:String},
    email:{type:String},
    number:{type:String},
    alternateNumber:{type:String},
